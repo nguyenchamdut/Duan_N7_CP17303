@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Trang Chủ" android:id="@+id/nav_trangchu"
+        android:icon="@drawable/ic_home"/>
+    <item android:title="Thông Báo" android:id="@+id/nav_thongbao"
+        android:icon="@drawable/ic_thongbao"/>
+    <item android:title="Yêu Thích" android:id="@+id/nav_yeuthich"
+        android:icon="@drawable/ic_yeuthich"/>
+    <item android:title="Tài Khoản" android:id="@+id/nav_taikhoan"
+        android:icon="@drawable/ic_taikhoan"/>
+</menu>
