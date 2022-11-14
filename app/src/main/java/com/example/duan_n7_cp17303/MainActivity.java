@@ -14,5 +14,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Nguyên thêm", Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "Manh them", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "thêm lần 2", Toast.LENGTH_SHORT).show();
     }
 }
