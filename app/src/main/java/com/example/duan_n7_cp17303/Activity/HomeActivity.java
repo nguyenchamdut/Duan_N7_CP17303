@@ -14,8 +14,11 @@ import com.example.duan_n7_cp17303.Fragment.ThongBaoFragment;
 import com.example.duan_n7_cp17303.Fragment.TrangChuFragment;
 import com.example.duan_n7_cp17303.Fragment.YeuThichFragment;
 import com.example.duan_n7_cp17303.R;
+import com.example.duan_n7_cp17303.Sqlserver.DbSqlServer;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+
+import java.sql.Connection;
 
 public class HomeActivity extends AppCompatActivity {
     private FragmentManager fragment;
@@ -23,6 +26,12 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        //chạy csdl sql server
+        DbSqlServer dbSqlServer = new DbSqlServer();
+        Connection conn = dbSqlServer.openConnect();
+
+        //code giao diện
         fragment = getSupportFragmentManager();
 
         TrangChuFragment trangChuFragment = new TrangChuFragment();

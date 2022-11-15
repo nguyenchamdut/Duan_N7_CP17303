@@ -24,7 +24,7 @@ public class TrangChuAdapter extends FragmentStateAdapter {
         }else if(position == 2){
             return new KhacFragment();
         }else {
-         return  new AoFragment();
+            return  new AoFragment();
         }
     }
 
