@@ -13,15 +13,15 @@ public class DbSqlServer {
     public Connection openConnect(){
         String ip = "103.179.188.76", port = "1433", user = "CP17303_n07",
                 pass = "nguyen2003@123", db = "CP17303_n07";
-
+//
         StrictMode.ThreadPolicy threadPolicy = new
                 StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(threadPolicy);
 
         try {
-            Class.forName("net.sourceforge.jtds.jdbc.Driver&quot");
+            Class.forName("net.sourceforge.jtds.jdbc.Driver");
             String connectUrl = "jdbc:jtds:sqlserver://" + ip +
-":" + port + ";databasename" + db +";user=" + user
+            ":" + port + ";databasename" + db +";user=" + user
                     +";password=" + pass +";";
             this.connection =
                     DriverManager.getConnection(connectUrl);
