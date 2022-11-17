@@ -7,15 +7,17 @@ public class Donhang {
     int id_khachhang;
     Date ngay_muahang;
     String trangthai;
+    String tencuahang;
 
     public Donhang() {
     }
 
-    public Donhang(int id_donhang, int id_khachhang, Date ngay_muahang, String trangthai) {
+    public Donhang(int id_donhang, int id_khachhang, Date ngay_muahang, String trangthai, String tencuahang) {
         this.id_donhang = id_donhang;
         this.id_khachhang = id_khachhang;
         this.ngay_muahang = ngay_muahang;
         this.trangthai = trangthai;
+        this.tencuahang = tencuahang;
     }
 
     public int getId_donhang() {
@@ -48,5 +50,13 @@ public class Donhang {
 
     public void setTrangthai(String trangthai) {
         this.trangthai = trangthai;
+    }
+
+    public String getTencuahang() {
+        return tencuahang;
+    }
+
+    public void setTencuahang(String tencuahang) {
+        this.tencuahang = tencuahang;
     }
 }

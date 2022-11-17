@@ -1,32 +1,30 @@
 package com.example.duan_n7_cp17303.DTO;
 
 public class Taikhoan {
-    String taikhoan;
-    String matkhau;
+    String username;
+    String pass;
 
     public Taikhoan() {
     }
 
-    public Taikhoan(String taikhoan, String matkhau) {
-        this.taikhoan = taikhoan;
-        this.matkhau = matkhau;
+    public Taikhoan(String username, String pass) {
+        this.username = username;
+        this.pass = pass;
     }
 
-    public String getTaikhoan() {
-        return taikhoan;
+    public String getUsername() {
+        return username;
     }
 
-    public void setTaikhoan(String taikhoan) {
-        this.taikhoan = taikhoan;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getMatkhau() {
-        return matkhau;
+    public String getPass() {
+        return pass;
     }
 
-    public void setMatkhau(String matkhau) {
-        this.matkhau = matkhau;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
-
-
 }

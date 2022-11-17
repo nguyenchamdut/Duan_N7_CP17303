@@ -2,16 +2,24 @@ package com.example.duan_n7_cp17303.DTO;
 
 public class Sanpham {
     int id_sp;
-    int id_hangsp;
+    int id_loai;
     String tensp;
+    String giatien;
+    int soluong;
+    int id_binhluan;
+    String anh;
 
     public Sanpham() {
     }
 
-    public Sanpham(int id_sp, int id_hangsp, String tensp) {
+    public Sanpham(int id_sp, int id_loai, String tensp, String giatien, int soluong, int id_binhluan, String anh) {
         this.id_sp = id_sp;
-        this.id_hangsp = id_hangsp;
+        this.id_loai = id_loai;
         this.tensp = tensp;
+        this.giatien = giatien;
+        this.soluong = soluong;
+        this.id_binhluan = id_binhluan;
+        this.anh = anh;
     }
 
     public int getId_sp() {
@@ -22,12 +30,12 @@ public class Sanpham {
         this.id_sp = id_sp;
     }
 
-    public int getId_hangsp() {
-        return id_hangsp;
+    public int getId_loai() {
+        return id_loai;
     }
 
-    public void setId_hangsp(int id_hangsp) {
-        this.id_hangsp = id_hangsp;
+    public void setId_loai(int id_loai) {
+        this.id_loai = id_loai;
     }
 
     public String getTensp() {
@@ -36,5 +44,37 @@ public class Sanpham {
 
     public void setTensp(String tensp) {
         this.tensp = tensp;
+    }
+
+    public String getGiatien() {
+        return giatien;
+    }
+
+    public void setGiatien(String giatien) {
+        this.giatien = giatien;
+    }
+
+    public int getSoluong() {
+        return soluong;
+    }
+
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
+    }
+
+    public int getId_binhluan() {
+        return id_binhluan;
+    }
+
+    public void setId_binhluan(int id_binhluan) {
+        this.id_binhluan = id_binhluan;
+    }
+
+    public String getAnh() {
+        return anh;
+    }
+
+    public void setAnh(String anh) {
+        this.anh = anh;
     }
 }
