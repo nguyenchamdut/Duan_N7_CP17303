@@ -6,19 +6,18 @@ public class Sanpham {
     String tensp;
     String giatien;
     int soluong;
-    int id_binhluan;
     String anh;
 
     public Sanpham() {
     }
 
-    public Sanpham(int id_sp, int id_loai, String tensp, String giatien, int soluong, int id_binhluan, String anh) {
+    public Sanpham(int id_sp, int id_loai, String tensp, String giatien, int soluong,  String anh) {
         this.id_sp = id_sp;
         this.id_loai = id_loai;
         this.tensp = tensp;
         this.giatien = giatien;
         this.soluong = soluong;
-        this.id_binhluan = id_binhluan;
+
         this.anh = anh;
     }
 
@@ -62,13 +61,7 @@ public class Sanpham {
         this.soluong = soluong;
     }
 
-    public int getId_binhluan() {
-        return id_binhluan;
-    }
 
-    public void setId_binhluan(int id_binhluan) {
-        this.id_binhluan = id_binhluan;
-    }
 
     public String getAnh() {
         return anh;
