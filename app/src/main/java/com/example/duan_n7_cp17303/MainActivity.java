@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.duan_n7_cp17303.Sqlserver.DbSqlServer;
 
@@ -17,6 +18,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Log.d("TAG", "onCreate: luyen da o day");
-
+        Toast.makeText(this, "Nguyen o day", Toast.LENGTH_SHORT).show();
     }
 }
