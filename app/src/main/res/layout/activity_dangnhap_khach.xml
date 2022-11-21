@@ -69,7 +69,7 @@
         android:id="@+id/dangky"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bạn đã có tài khoản rồi! Đi tới đăng nhập"
+        android:layout_below="@+id/dangnhap"
         android:layout_marginTop="20dp"
-        android:layout_below="@+id/dangnhap"/>
+        android:text="Bạn chưa có tài khoản rồi! Đi tới đăng ký" />
 </RelativeLayout>
