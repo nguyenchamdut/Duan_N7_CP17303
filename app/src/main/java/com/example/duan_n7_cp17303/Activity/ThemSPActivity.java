@@ -39,9 +39,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ThemSPActivity extends AppCompatActivity {
-    private ImageView imgAnhSP,imgChonanhSP;
-    private TextView tvTenSP,tvGiaTien,tvSoLuong,tvIDSP;
-    private TextInputLayout tilTenSP,tilGiaTien,tilSoLuong,tilIDSP;
+    private TextView tvTenSP,tvGiaTien,tvSoLuong,tvAnh;
+    private TextInputLayout tilTenSP,tilGiaTien,tilSoLuong,tilAnh;
     private Button btnHuy,btnThem;
 
 
@@ -65,11 +64,11 @@ public class ThemSPActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_spactivity);
-        imgAnhSP = findViewById(R.id.imgAnhSP);
-        imgChonanhSP = findViewById(R.id.imgChonAnhSP);
         tvTenSP = findViewById(R.id.id_tensp);
         tvGiaTien = findViewById(R.id.id_giatien);
         tvSoLuong = findViewById(R.id.id_soluong);
+        tvAnh = findViewById(R.id.id_anhsp);
+        tilAnh = findViewById(R.id.til_anhsp);
         tilTenSP = findViewById(R.id.til_tensp);
         tilGiaTien = findViewById(R.id.til_giatien);
         tilSoLuong = findViewById(R.id.til_soluong);
@@ -79,14 +78,6 @@ public class ThemSPActivity extends AppCompatActivity {
 
         daosanpham = new Daosanpham();
         list = daosanpham.getAll();
-//        if(list.size() == 0){
-//            tvIDSP.setText("1");
-//        }else{
-//            sanpham = daosanpham.getAll().get(list.size()-1);
-//            tvIDSP.setText(String.valueOf(sanpham.getId_sp() + 1));
-//        }
-
-
 
         Spinner spinner = findViewById(R.id.id_spnChonLoai);
         daohang = new Daohang();
@@ -105,47 +96,29 @@ public class ThemSPActivity extends AppCompatActivity {
 
             }
         });
-        appCompatActivity = ThemSPActivity.this;
-
-        launcherFlie = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-            @Override
-            public void onActivityResult(ActivityResult result) {
-                if (result.getResultCode() == appCompatActivity.RESULT_OK && result.getData() != null){
-                    Uri uri = result.getData().getData();
-                    try{
-                        InputStream inputStream = appCompatActivity.getContentResolver().openInputStream(uri);
-                        Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                        imgAnhSP.setImageBitmap(bitmap);
-                    }catch (FileNotFoundException e){
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-
-        imgChonanhSP.setOnClickListener(v -> {
-            clickOpenBottomShet();
-        });
         btnThem.setOnClickListener(v -> {
-//            if (valueDate()){
+            validate();
+            if (temp == 0){
                 Sanpham sp = new Sanpham();
                 sp.setId_loai(Integer.parseInt(maloai));
-                sp.setAnh(String.valueOf(imgAnhSP));
+                sp.setAnh(tvAnh.getText().toString());
                 sp.setTensp(tvTenSP.getText().toString());
                 sp.setGiatien(tvGiaTien.getText().toString());
                 sp.setSoluong(Integer.parseInt(tvSoLuong.getText().toString()));
                 try {
                     daosanpham.insertSP(sp);
-                    Toast.makeText(appCompatActivity, "Them thanh cong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Them thanh cong", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ThemSPActivity.this,HomeActivity.class);
                     startActivity(intent);
                 }catch (Exception e){
                     e.printStackTrace();
-                    Toast.makeText(appCompatActivity, "Them khong thanh cong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Them khong thanh cong", Toast.LENGTH_SHORT).show();
                 }
 
 
-//            }
+            }else{
+                temp = 0;
+            }
         });
         btnHuy.setOnClickListener(v -> {
             Intent intent = new Intent(ThemSPActivity.this,HomeActivity.class);
@@ -153,34 +126,30 @@ public class ThemSPActivity extends AppCompatActivity {
         });
 
     }
-    public void clickOpenBottomShet(){
-        View viewDialog = appCompatActivity.getLayoutInflater().inflate(R.layout.bottom_sheet,null);
-        BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(appCompatActivity);
-        bottomSheetDialog.setContentView(viewDialog);
-
-        lnlChupAnh = viewDialog.findViewById(R.id.lnlChupAnh);
-        lnlChonFile = viewDialog.findViewById(R.id.lnlChonAnh);
-
-        lnlChupAnh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                launcherCamera.launch(intent);
-                bottomSheetDialog.cancel();
-            }
-        });
-        lnlChonFile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                launcherFlie.launch(intent);
-                bottomSheetDialog.cancel();
-            }
-        });
-        bottomSheetDialog.show();
-    }
-    public boolean valueDate(){
-        return true;
+    public void validate(){
+        if(tvTenSP.getText().length() == 0){
+            tilTenSP.setError("Không để trống tên sản phẩm");
+            temp++;
+        }else{
+            tilTenSP.setError("");
+        }
+        if(tvGiaTien.getText().length() == 0){
+            tilGiaTien.setError("Không để trống giá tiền");
+            temp++;
+        }else{
+            tilGiaTien.setError("");
+        }
+        if(tvSoLuong.getText().length() == 0){
+            tilSoLuong.setError("Không để trống số lượng");
+            temp++;
+        }else{
+            tilSoLuong.setError("");
+        }
+        if(tvAnh.getText().length() == 0){
+            tilAnh.setError("Không để trống link ảnh");
+            temp++;
+        }else{
+            tilAnh.setError("");
+        }
     }
 }

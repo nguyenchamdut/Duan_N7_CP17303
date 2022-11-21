@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
 import com.example.duan_n7_cp17303.Adapter.SanPhamAdapter;
 import com.example.duan_n7_cp17303.DAO.Daosanpham;
@@ -25,7 +26,7 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class QuanFragment extends Fragment {
-    private RecyclerView recyclerView;
+    private GridView recyclerView;
     Daosanpham daosanpham = new Daosanpham();
     List<Sanpham> list;
     SanPhamAdapter adapter;
@@ -58,7 +59,6 @@ public class QuanFragment extends Fragment {
         recyclerView = view.findViewById(R.id.id_recyclerViewQuan);
         list = daosanpham.getAllQuan();
         adapter = new SanPhamAdapter(getActivity(),list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
     }
 }

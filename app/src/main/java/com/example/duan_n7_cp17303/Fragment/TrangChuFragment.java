@@ -1,5 +1,7 @@
 package com.example.duan_n7_cp17303.Fragment;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,15 +10,32 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.duan_n7_cp17303.Activity.HomeActivity;
 import com.example.duan_n7_cp17303.Activity.ThemSPActivity;
+import com.example.duan_n7_cp17303.Adapter.SpinnerLoai;
 import com.example.duan_n7_cp17303.Adapter.TrangChuAdapter;
+import com.example.duan_n7_cp17303.DAO.Daohang;
+import com.example.duan_n7_cp17303.DAO.Daosanpham;
+import com.example.duan_n7_cp17303.DTO.Loai;
+import com.example.duan_n7_cp17303.DTO.Sanpham;
 import com.example.duan_n7_cp17303.R;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -82,4 +101,5 @@ public class TrangChuFragment extends Fragment {
             startActivity(intent);
         });
     }
+
 }
