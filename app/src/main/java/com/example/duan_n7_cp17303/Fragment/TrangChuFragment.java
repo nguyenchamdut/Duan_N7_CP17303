@@ -1,5 +1,6 @@
 package com.example.duan_n7_cp17303.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.duan_n7_cp17303.Activity.ThemSPActivity;
 import com.example.duan_n7_cp17303.Adapter.TrangChuAdapter;
 import com.example.duan_n7_cp17303.R;
 import com.google.android.material.tabs.TabLayout;
@@ -74,5 +76,10 @@ public class TrangChuFragment extends Fragment {
             }
         });
         mediator.attach();
+
+        view.findViewById(R.id.id_fabthemsp).setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), ThemSPActivity.class);
+            startActivity(intent);
+        });
     }
 }
