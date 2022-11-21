@@ -19,5 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("TAG", "onCreate: luyen da o day");
         Toast.makeText(this, "Nguyen o day", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Nguyen ga", Toast.LENGTH_SHORT).show();
     }
 }
