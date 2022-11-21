@@ -19,6 +19,32 @@ public class Daosanpham {
         connection = db.openConnect();
     }
 
+    public List<Sanpham> getAll(){
+        List<Sanpham> sanphamList = new ArrayList<>();
+
+        try{
+            if (this.connection != null){
+                String sqlSanPham = "select * from sanpham";
+                Statement statement = this.connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(sqlSanPham);
+                while (resultSet.next()){
+                    Sanpham sp = new Sanpham();
+                    sp.setId_sp(resultSet.getInt("id_sp"));
+                    sp.setId_loai(resultSet.getInt("id_loai"));
+                    sp.setTensp(resultSet.getString("tensp"));
+                    sp.setGiatien(resultSet.getString("giatien"));
+                    sp.setSoluong(resultSet.getInt("soluong"));
+                    sp.setAnh(resultSet.getString("anh"));
+                    sanphamList.add(sp);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            Log.e("zzzzz","getAllQuan co loi");
+        }
+        return sanphamList;
+    }
+
     public List<Sanpham> getAllQuan(){
         List<Sanpham> sanphamList = new ArrayList<>();
 
@@ -97,7 +123,7 @@ public class Daosanpham {
     public void insertSP(Sanpham sp){
         try{
             if (this.connection != null){
-                String insertSP = "insert into sanpham(id_loai,tensp,giatien,soluong,anh) value (N'" +sp.getId_loai() + sp.getTensp() + sp.getGiatien() + sp.getSoluong() + sp.getAnh() +"')";
+                String insertSP = "insert into sanpham(tensp,id_loai,giatien,soluong,anh) values (N'" + sp.getTensp() +"'," +sp.getId_loai() + ",'"+ sp.getGiatien() + "','"+sp.getSoluong() + "','"+ sp.getAnh() +"')";
 
                 String generatedColumns[] = {"id_sp"};
 

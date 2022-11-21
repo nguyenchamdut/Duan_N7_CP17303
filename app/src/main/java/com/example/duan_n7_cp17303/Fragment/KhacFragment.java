@@ -2,13 +2,22 @@ package com.example.duan_n7_cp17303.Fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.duan_n7_cp17303.Adapter.SanPhamAdapter;
+import com.example.duan_n7_cp17303.DAO.Daosanpham;
+import com.example.duan_n7_cp17303.DTO.Sanpham;
 import com.example.duan_n7_cp17303.R;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +25,10 @@ import com.example.duan_n7_cp17303.R;
  * create an instance of this fragment.
  */
 public class KhacFragment extends Fragment {
-
+    private RecyclerView recyclerView;
+    Daosanpham daosanpham = new Daosanpham();
+    List<Sanpham> list;
+    SanPhamAdapter adapter;
     public KhacFragment() {
         // Required empty public constructor
     }
@@ -37,5 +49,15 @@ public class KhacFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_khac, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        recyclerView = view.findViewById(R.id.id_recyclerViewKhac);
+        list = daosanpham.getAllKhac();
+        adapter = new SanPhamAdapter(getActivity(),list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(adapter);
     }
 }

@@ -39,4 +39,15 @@ public class Daohang {
         }
         return loais;
     }
+    public void insertLoai(Loai loai){
+        try {
+            if (this.connection != null){
+                String insertSQL = "insert into loai(tenloai) values(N'"+loai.getTenloai() + "')";
+                String generatedColumns[] = {"id_loai"};
+
+            }
+        }catch (Exception e){
+
+        }
+    }
 }

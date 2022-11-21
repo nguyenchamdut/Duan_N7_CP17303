@@ -1,5 +1,7 @@
 package com.example.duan_n7_cp17303.DTO;
 
+import java.sql.Blob;
+
 public class Sanpham {
     int id_sp;
     int id_loai;
@@ -60,8 +62,6 @@ public class Sanpham {
     public void setSoluong(int soluong) {
         this.soluong = soluong;
     }
-
-
 
     public String getAnh() {
         return anh;
