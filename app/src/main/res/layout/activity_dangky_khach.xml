@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".MainActivity"
+    android:background="@drawable/background22">
+
+    <TextView
+        android:id="@+id/tv_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đăng Ký"
+        android:textColor="@color/green"
+        android:textStyle="bold"
+        android:textSize="40dp"
+        android:layout_marginLeft="115dp"/>
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#30ffffff"
+        android:hint="Tài Khoản"
+        android:textColorHint="@color/white"
+        android:paddingLeft="20dp"
+        android:layout_margin="20dp"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:drawablePadding="20dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/tv_1"
+        />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#30ffffff"
+        android:hint="Mật Khẩu"
+        android:textColorHint="@color/white"
+        android:paddingLeft="20dp"
+        android:layout_margin="20dp"
+        android:drawableLeft="@drawable/ic_baseline_info_24"
+        android:drawablePadding="20dp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/username"/>
+
+    <EditText
+        android:id="@+id/repassword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#30ffffff"
+        android:hint="Nhập lại mật khẩu"
+        android:textColorHint="@color/white"
+        android:paddingLeft="20dp"
+        android:layout_margin="20dp"
+        android:drawableLeft="@drawable/ic_baseline_info_24"
+        android:drawablePadding="20dp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/password"/>
+
+    <Button
+        android:id="@+id/btnsignup"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Đăng ký"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/repassword"/>
+
+
+
+</RelativeLayout>
