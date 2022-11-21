@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.duan_n7_cp17303.DTO.Sanpham;
 import com.example.duan_n7_cp17303.R;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +45,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         holder.tvTenSP.setText("" + sp.getTensp());
         holder.tvGiaTien.setText("" + sp.getGiatien());
 //        holder.imgAnhSP.
+        Glide.with(context).load(Uri.parse(sp.getAnh())).into(holder.imgAnhSP);
 
     }
 
