@@ -37,11 +37,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TrangChuFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class TrangChuFragment extends Fragment {
 
     private ViewPager2 viewPager2;
@@ -51,7 +46,6 @@ public class TrangChuFragment extends Fragment {
     public TrangChuFragment() {
         // Required empty public constructor
     }
-
 
     public static TrangChuFragment newInstance() {
         TrangChuFragment fragment = new TrangChuFragment();
