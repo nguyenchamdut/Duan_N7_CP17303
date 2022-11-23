@@ -113,5 +113,26 @@
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#ff6659">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/doimatkhau"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="20dp"/>
+        <TextView
+            android:id="@+id/ll_suasp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sản phẩm đã thêm"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
 
 </LinearLayout>
