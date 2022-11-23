@@ -34,6 +34,9 @@ public class Dangky_khach extends AppCompatActivity {
                 Taikhoan taikhoan = new Taikhoan();
                 taikhoan.setUsername(username.getText().toString());
                 taikhoan.setPass(password.getText().toString());
+                if (username.getText().length() == 0 || password.getText().length() == 0  || repassword.getText().length() == 0 ){
+                    Toast.makeText(Dangky_khach.this, "không được để trống", Toast.LENGTH_SHORT).show();
+                }else {
                     try {
                         daotaikhoan.insertRow(taikhoan);
                         Toast.makeText(Dangky_khach.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
@@ -41,6 +44,8 @@ public class Dangky_khach extends AppCompatActivity {
                         e.printStackTrace();
                         Toast.makeText(Dangky_khach.this, "Them khong thanh cong", Toast.LENGTH_SHORT).show();
                     }
+                }
+
                 }
 
         });

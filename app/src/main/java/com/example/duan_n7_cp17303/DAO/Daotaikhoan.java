@@ -26,7 +26,7 @@ public class Daotaikhoan {
         try {
             if (this.objConn != null) {
 
-                String sqlQuery = "SELECT * FROM taikhoan ";
+                String sqlQuery = "SELECT * FROM taikhoan";
 
                 Statement statement = this.objConn.createStatement(); // khởi tạo cấu trúc truy vấn
 
@@ -39,6 +39,12 @@ public class Daotaikhoan {
                     objCat.setPass(resultSet.getString("pass")); // tên cột dữ liệu là pass
 
                     listCat.add(objCat);
+
+                    for(int i=0;i<listCat.size();i++){
+                        Taikhoan tk = listCat.get(i);
+                        Log.e("nguyen",tk.getUsername() + tk.getPass());
+                    }
+                    Log.d("nguyen", "getAll: đăng nhập thành thông");
                 }
             } // nếu kết nối khác null thì mới select và thêm dữ liệu vào, nếu không thì trả về ds rỗng
 
