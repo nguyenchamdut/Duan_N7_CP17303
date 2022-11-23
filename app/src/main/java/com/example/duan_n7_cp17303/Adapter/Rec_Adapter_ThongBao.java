@@ -1,6 +1,7 @@
 package com.example.duan_n7_cp17303.Adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +11,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.duan_n7_cp17303.DAO.Daosanpham;
+import com.example.duan_n7_cp17303.DTO.Sanpham;
 import com.example.duan_n7_cp17303.DTO.Thongbao;
 import com.example.duan_n7_cp17303.R;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class Rec_Adapter_ThongBao extends RecyclerView.Adapter<Rec_Adapter_ThongBao.viewHolderr> {
@@ -41,8 +46,18 @@ public class Rec_Adapter_ThongBao extends RecyclerView.Adapter<Rec_Adapter_Thong
 
         Thongbao thongBao = list.get(position);
 
-        //holder.img_dh.setImageResource(thongBao.getImg_donHang());
-        //holder.ten_donHang.setText(thongBao.getTen_donHang());
+        Daosanpham daosanpham = new Daosanpham();
+
+        try {
+            Sanpham sanpham = daosanpham.get_SP_theo_ID(thongBao.getId_sp());
+            holder.ten_donHang.setText(sanpham.getTensp());
+            Glide.with(context).load(Uri.parse(sanpham.getAnh())).into(holder.img_dh);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+
         holder.title.setText(thongBao.getTieude());
 
         holder.xemChiTiet.setOnClickListener(new View.OnClickListener() {
