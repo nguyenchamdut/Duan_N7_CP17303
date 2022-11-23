@@ -3,6 +3,7 @@ package com.example.duan_n7_cp17303.Fragment;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -90,10 +91,21 @@ public class TrangChuFragment extends Fragment {
         });
         mediator.attach();
 
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("Login", getContext().MODE_PRIVATE);
+        String u = sharedPreferences.getString("name", "");
+
+        if (u.equals("admin")){
+            view.findViewById(R.id.id_fabthemsp).setVisibility(View.VISIBLE);
+        }
+        else {
+            view.findViewById(R.id.id_fabthemsp).setVisibility(View.INVISIBLE);
+        }
+
         view.findViewById(R.id.id_fabthemsp).setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), ThemSPActivity.class);
             startActivity(intent);
         });
+
     }
 
 }

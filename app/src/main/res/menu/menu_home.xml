@@ -6,9 +6,9 @@
         android:icon="@drawable/ic_thongbao"/>
     <item android:title="Yêu Thích" android:id="@+id/nav_yeuthich"
         android:icon="@drawable/ic_yeuthich"/>
-
-    <item android:title="Tài Khoản" android:id="@+id/nav_taikhoan"
-        android:icon="@drawable/ic_taikhoan"/>
     <item android:title="Quản lý tài khoản" android:id="@+id/nav_qltaikhoan"
         android:icon="@drawable/ic_baseline_account_circle_24"/>
+    <item android:title="Tài Khoản" android:id="@+id/nav_taikhoan"
+        android:icon="@drawable/ic_taikhoan"/>
+
 </menu>

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -45,6 +46,19 @@ public class HomeActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.id_bottom_nav);
 
         Menu menu = bottomNavigationView.getMenu();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
+        String u = sharedPreferences.getString("name", "");
+
+        if(!u.equals("admin")){
+            menu.findItem(R.id.nav_qltaikhoan).setVisible(false);
+            menu.findItem(R.id.nav_yeuthich).setVisible(true);
+        }
+        else {
+            menu.findItem(R.id.nav_qltaikhoan).setVisible(true);
+            menu.findItem(R.id.nav_yeuthich).setVisible(false);
+
+        }
 
        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
            @Override
