@@ -3,10 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/VU THANH LUYEN/AndroidStudioProjects/Duan_N7_Cp17303/app/src/main/res/layout/activity_dangky_khach.xml" value="0.22418478260869565" />
+        <entry key="..\:/Users/VU THANH LUYEN/AndroidStudioProjects/Duan_N7_Cp17303/app/src/main/res/layout/activity_dangnhap_khach.xml" value="0.22418478260869565" />
+        <entry key="..\:/Users/VU THANH LUYEN/AndroidStudioProjects/Duan_N7_Cp17303/app/src/main/res/layout/activity_hien_thi_spactivity.xml" value="0.22418478260869565" />
+        <entry key="..\:/Users/VU THANH LUYEN/AndroidStudioProjects/Duan_N7_Cp17303/app/src/main/res/layout/bottom_sheet.xml" value="0.22418478260869565" />
         <entry key="..\:/Users/VU THANH LUYEN/AndroidStudioProjects/Duan_N7_Cp17303/app/src/main/res/layout/dialog_thong_bao.xml" value="0.22418478260869565" />
-        <entry key="..\:/Users/VU THANH LUYEN/AndroidStudioProjects/Duan_N7_Cp17303/app/src/main/res/layout/fragment_thong_bao.xml" value="0.22418478260869565" />
+        <entry key="..\:/Users/VU THANH LUYEN/AndroidStudioProjects/Duan_N7_Cp17303/app/src/main/res/layout/fragment_thong_bao.xml" value="0.264" />
         <entry key="..\:/Users/VU THANH LUYEN/AndroidStudioProjects/Duan_N7_Cp17303/app/src/main/res/layout/fragment_thong_ke.xml" value="0.22418478260869565" />
+        <entry key="..\:/Users/VU THANH LUYEN/AndroidStudioProjects/Duan_N7_Cp17303/app/src/main/res/layout/item_tai_khoan.xml" value="0.22418478260869565" />
         <entry key="..\:/Users/VU THANH LUYEN/AndroidStudioProjects/Duan_N7_Cp17303/app/src/main/res/layout/item_thong_bao.xml" value="0.22418478260869565" />
+        <entry key="..\:/Users/VU THANH LUYEN/AndroidStudioProjects/Duan_N7_Cp17303/app/src/main/res/layout/quanlytaikhoan_fragment.xml" value="0.22418478260869565" />
         <entry key="..\:/Users/VU THANH LUYEN/AndroidStudioProjects/Duan_N7_Cp17303/app/src/main/res/layout/spinner_adapter_loai.xml" value="0.22418478260869565" />
         <entry key="..\:/Users/VU THANH LUYEN/AndroidStudioProjects/Duan_N7_Cp17303/app/src/main/res/layout/spinner_san_pham.xml" value="0.22418478260869565" />
         <entry key="..\:/Users/VU THANH LUYEN/AndroidStudioProjects/Duan_N7_Cp17303/app/src/main/res/menu/menu_home.xml" value="0.25416666666666665" />

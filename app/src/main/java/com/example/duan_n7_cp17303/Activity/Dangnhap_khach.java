@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.example.duan_n7_cp17303.DAO.Daotaikhoan;
@@ -34,35 +37,37 @@ public class Dangnhap_khach extends AppCompatActivity {
         btn_dangnhap = (Button) findViewById(R.id.dangnhap);
         btn_dangky = (Button) findViewById(R.id.dangky);
         daotaikhoan = new Daotaikhoan();
-
-
-
+        CheckBox checkBox = findViewById(R.id.checkk);
 
         btn_dangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                List<Taikhoan> list = new ArrayList<>();
                 String user = username.getText().toString();
                 String pass = password.getText().toString();
 
-                List<Taikhoan> taikhoanList = daotaikhoan.getAll();
+                if (daotaikhoan.check_login(user, pass) == 1){
+                    remember(user,pass, checkBox.isChecked());
 
-                if(user.equals("")||pass.equals("")){
-                    Toast.makeText(Dangnhap_khach.this, "Vui lòng không để trống", Toast.LENGTH_SHORT).show();
-                }else {
-                    for(int i =0;i<taikhoanList.size();i++){
-                        Taikhoan tk = taikhoanList.get(i);
-                        String nguyen = tk.getUsername();
-                        String passsql = tk.getPass();
-                        if (user.equals(nguyen) && pass.equals(passsql)){
-                            Toast.makeText(Dangnhap_khach.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                        }else {
-                            Toast.makeText(Dangnhap_khach.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                    Intent intent = new Intent(Dangnhap_khach.this, HomeActivity.class);
+                    Toast.makeText(Dangnhap_khach.this, "Đăng nhập thành công", Toast.LENGTH_LONG).show();
+                    startActivity(intent);
                 }
+                else {
+                    Toast.makeText(Dangnhap_khach.this, "Đăng nhập thất bại", Toast.LENGTH_LONG).show();
+
+                }
+
             }
         });
+
+        SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
+        String u = sharedPreferences.getString("name", "");
+        String p = sharedPreferences.getString("pass", "");
+        Boolean check_login = sharedPreferences.getBoolean("remember",false);
+
+        username.setText(u);
+        password.setText(p);
+        checkBox.setChecked(check_login);
 
         btn_dangky.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,4 +77,21 @@ public class Dangnhap_khach extends AppCompatActivity {
             }
         });
     }
+
+    public void remember(String u, String p, boolean chk){
+        SharedPreferences preferences = getSharedPreferences("Login", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        if(!chk){
+            editor.clear();
+        }
+        else {
+            editor.putString("name", u);
+            editor.putString("pass", p);
+            editor.putBoolean("remember", chk);
+        }
+
+        editor.commit();
+    }
+
 }

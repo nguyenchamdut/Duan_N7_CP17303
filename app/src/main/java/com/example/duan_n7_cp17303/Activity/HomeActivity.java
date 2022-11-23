@@ -7,8 +7,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.duan_n7_cp17303.Fragment.QuanLyTaiKhanFragment;
 import com.example.duan_n7_cp17303.Fragment.TaiKhoanFragment;
 import com.example.duan_n7_cp17303.Fragment.ThongBaoFragment;
 import com.example.duan_n7_cp17303.Fragment.ThongKeFragment;
@@ -42,6 +44,8 @@ public class HomeActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView;
         bottomNavigationView = findViewById(R.id.id_bottom_nav);
 
+        Menu menu = bottomNavigationView.getMenu();
+
        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
            @Override
            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -54,8 +58,12 @@ public class HomeActivity extends AppCompatActivity {
                    replaceFragment(YeuThichFragment.newInstance());
                }else if(id == R.id.nav_taikhoan){
                    replaceFragment(TaiKhoanFragment.newInstance());
-               }else if(id == R.id.nav_thongke){
-                   replaceFragment(ThongKeFragment.newInstance());
+               }
+//               else if(id == R.id.nav_thongke){
+//                   replaceFragment(ThongKeFragment.newInstance());
+//               }
+               else if(id == R.id.nav_qltaikhoan){
+                   replaceFragment(QuanLyTaiKhanFragment.newInstance());
                }else{
                    replaceFragment(TrangChuFragment.newInstance());
                }

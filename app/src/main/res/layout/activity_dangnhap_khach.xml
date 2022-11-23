@@ -49,13 +49,14 @@
         android:layout_below="@+id/username1"
         />
 
-    <RadioButton
+    <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lưu tài khoản"
-        android:layout_below="@+id/password1"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="-10dp"
-        android:layout_marginLeft="20dp"/>
+        android:id="@+id/checkk"
+        android:text="Lưu đăng nhập?"
+        android:layout_below="@+id/password1"/>
 
     <Button
         android:id="@+id/dangnhap"
