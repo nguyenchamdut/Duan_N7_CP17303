@@ -2,6 +2,7 @@ package com.example.duan_n7_cp17303.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +14,7 @@ import com.example.duan_n7_cp17303.DTO.Taikhoan;
 import com.example.duan_n7_cp17303.R;
 
 public class Dangky_khach extends AppCompatActivity {
-    EditText username, password, repassword;
+    EditText username, password, repassword,avatar;
     Button signup;
     Daotaikhoan daotaikhoan;
     @Override
@@ -26,33 +27,23 @@ public class Dangky_khach extends AppCompatActivity {
         signup = (Button) findViewById(R.id.btnsignup);
 
         daotaikhoan = new Daotaikhoan();
-        Taikhoan newObjCat = new Taikhoan();
-        newObjCat.setAvatar("anh1");
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String user = username.getText().toString();
-                String pass = password.getText().toString();
-                String repass = repassword.getText().toString();
-                if(user.equals("")||pass.equals("")||repass.equals(""))
-                    Toast.makeText(Dangky_khach.this, "Vui lòng không để trống", Toast.LENGTH_SHORT).show();
-                else{
-                    if(pass.equals(repass)){
-                            Boolean insert = daotaikhoan.insertRow(user, pass);
-                            if(insert==true){
-                                Toast.makeText(Dangky_khach.this, "Đã đăng ký thành công", Toast.LENGTH_SHORT).show();
-                                onBackPressed();
-                            }else{
-                                Toast.makeText(Dangky_khach.this, "Đăng ký không thành công", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        else{
-                            Toast.makeText(Dangky_khach.this, "Người dùng đã tồn tại! làm ơn đăng nhập", Toast.LENGTH_SHORT).show();
-                        }
+                Taikhoan taikhoan = new Taikhoan();
+                taikhoan.setUsername(username.getText().toString());
+                taikhoan.setPass(password.getText().toString());
+                    try {
+                        daotaikhoan.insertRow(taikhoan);
+                        Toast.makeText(Dangky_khach.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        Toast.makeText(Dangky_khach.this, "Them khong thanh cong", Toast.LENGTH_SHORT).show();
+                    }
+                }
 
-                } }
         });
-
     }
+
 }

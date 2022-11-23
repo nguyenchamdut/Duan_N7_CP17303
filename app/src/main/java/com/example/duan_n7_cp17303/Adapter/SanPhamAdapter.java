@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,7 +23,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHolder>{
+public class SanPhamAdapter extends BaseAdapter {
     private Context context;
     private List<Sanpham> list;
 
@@ -30,38 +31,40 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         this.context = context;
         this.list = list;
     }
-
-    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-        View view = inflater.inflate(R.layout.item_sanpham,parent,false);
-        return new ViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Sanpham sp = list.get(position);
-        holder.tvTenSP.setText("" + sp.getTensp());
-        holder.tvGiaTien.setText("" + sp.getGiatien());
-//        holder.imgAnhSP.
-        Glide.with(context).load(Uri.parse(sp.getAnh())).into(holder.imgAnhSP);
-
-    }
-
-    @Override
-    public int getItemCount() {
+    public int getCount() {
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView imgAnhSP;
-        TextView tvTenSP,tvGiaTien;
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            imgAnhSP = itemView.findViewById(R.id.imgSP);
-            tvTenSP = itemView.findViewById(R.id.tvTenSP);
-            tvGiaTien = itemView.findViewById(R.id.tvGiaTien);
-        }
+    @Override
+    public Object getItem(int position) {
+        return list.get(position);
     }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View view;
+        if (convertView == null){
+            view = View.inflate(parent.getContext(),R.layout.item_sanpham,null);
+        }else{
+            view = convertView;
+        }
+        TextView tvTenSP = view.findViewById(R.id.tvTenSP);
+        TextView tvGiaTien = view.findViewById(R.id.tvGiaTien);
+        ImageView imgAnhSP = view.findViewById(R.id.imgSP);
+
+        Sanpham sp = list.get(position);
+        tvTenSP.setText("" + sp.getTensp());
+        tvGiaTien.setText("" + sp.getGiatien());
+        Glide.with(context).load(Uri.parse(sp.getAnh())).into(imgAnhSP);
+        return view;
+    }
+
+
+
 }

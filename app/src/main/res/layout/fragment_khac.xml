@@ -3,9 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     tools:context=".Fragment.KhacFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <GridView
+        android:layout_margin="10dp"
+        android:numColumns="2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/id_recyclerViewKhac"/>

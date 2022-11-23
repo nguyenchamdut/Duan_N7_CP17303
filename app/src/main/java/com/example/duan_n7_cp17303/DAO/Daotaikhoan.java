@@ -48,17 +48,15 @@ public class Daotaikhoan {
             Log.e("zzzzzzzzzz", "getAll: Có lỗi truy vấn dữ liệu " );
             e.printStackTrace();
         }
-
         return  listCat;
     }
 
-    public boolean insertRow( String user, String pass){
-        Taikhoan objCat = new Taikhoan();
+    public boolean insertRow( Taikhoan objCat){
         try {
             if (this.objConn != null) {
                 // ghép chuỗi SQL
-                String insertSQL = "INSERT INTO taikhoan(username,pass) VALUES " +
-                        "('"+objCat.getUsername() +"' ,  '" + objCat.getPass() + "') ";
+                String insertSQL = "INSERT INTO taikhoan(username,pass,avatar) VALUES " +
+                        "('"+objCat.getUsername() +"' ,  '" + objCat.getPass() + "' , '" + objCat.getAvatar() +"') ";
 
                 PreparedStatement stmtInsert = this.objConn.prepareStatement(insertSQL);
                 stmtInsert.execute();
@@ -67,37 +65,11 @@ public class Daotaikhoan {
 
             } // nếu kết nối khác null thì mới select và thêm dữ liệu vào, nếu không thì trả về ds rỗng
 
-
         } catch (Exception e) {
             Log.e("zzzzzzzzzz", "insertRow: Có lỗi thêm dữ liệu " );
             e.printStackTrace();
         }
         return true;
     }
-
-    public void updateRow(Taikhoan objCat){
-
-        try {
-            if (this.objConn != null) {
-                // ghép chuỗi SQL
-                String sqlUpdate = "UPDATE taikhoan SET name= N'" + objCat.getPass() + "' WHERE id = " + objCat.getUsername();
-
-
-                PreparedStatement stmt = this.objConn.prepareStatement(sqlUpdate);
-                stmt.execute(); // thực thi câu lệnh SQL
-
-                Log.d("zzzzz", "updateRow: finish Update");
-
-
-            } // nếu kết nối khác null thì mới select và thêm dữ liệu vào, nếu không thì trả về ds rỗng
-
-
-        } catch (Exception e) {
-            Log.e("zzzzzzzzzz", "updateRow: Có lỗi sửa dữ liệu " );
-            e.printStackTrace();
-        }
-    }
-
-
 }
 

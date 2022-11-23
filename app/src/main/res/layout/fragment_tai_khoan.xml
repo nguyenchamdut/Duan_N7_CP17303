@@ -9,11 +9,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:background="#d32f2f"
+        android:layout_margin="20dp"
         >
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/fpt"
+            android:src="@drawable/ic_baseline_account_circle_24"
             android:layout_gravity="center_vertical"
             android:layout_margin="20dp"/>
         <TextView
@@ -21,18 +23,21 @@
             android:layout_height="wrap_content"
             android:text="Tên tài khoản"
             android:textSize="30dp"
+            android:textColor="@color/white"
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
+        android:background="#ff6659"
+        >
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/fpt"
+            android:src="@drawable/ic_baseline_post_add_24"
             android:layout_gravity="center_vertical"
             android:layout_margin="20dp"/>
         <TextView
@@ -41,17 +46,20 @@
             android:layout_height="wrap_content"
             android:text="Thêm thông tin"
             android:textSize="20dp"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ll_donhang"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="#ff6659">
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/fpt"
+            android:src="@drawable/donhang"
             android:layout_gravity="center_vertical"
             android:layout_margin="20dp"/>
         <TextView
@@ -59,17 +67,19 @@
             android:layout_height="wrap_content"
             android:text="Đơn hàng"
             android:textSize="20dp"
+            android:textColor="@color/white"
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
 
     <LinearLayout
-
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:layout_height="40dp">
+        android:layout_height="40dp"
+        android:background="#ff6659">
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/fpt"
+            android:src="@drawable/ic_baseline_account_circle_24"
             android:layout_gravity="center_vertical"
             android:layout_margin="20dp"/>
         <TextView
@@ -78,7 +88,30 @@
             android:layout_height="wrap_content"
             android:text="Đăng nhập"
             android:textSize="20dp"
+            android:textColor="@color/white"
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#ff6659">
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/doimatkhau"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="20dp"/>
+        <TextView
+            android:id="@+id/ll_doimatkhau"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đổi mật khẩu"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+
 
 </LinearLayout>

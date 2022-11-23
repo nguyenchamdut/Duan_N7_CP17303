@@ -4,75 +4,67 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="8dp">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    android:background="#ffffff"
+    >
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <TextView
-            android:id="@+id/tvTenSP"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="8dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toStartOf="@+id/imgDeleteSP"
-            app:layout_constraintStart_toEndOf="@+id/imgSP"
-            app:layout_constraintTop_toTopOf="@+id/imgSP" />
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:background="#ffffff"
+        android:layout_margin="8dp">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/imgSP"
-            app:layout_constraintStart_toEndOf="@+id/imgSP"
-            app:layout_constraintTop_toBottomOf="@+id/tvTenSP">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:background="#E3E2DF"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/imgSP"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                app:srcCompat="@drawable/ic_camera" />
             <TextView
-                android:textColor="#F10A0A"
-                android:id="@+id/tvGiaTien"
+                android:layout_marginTop="10dp"
+                android:id="@+id/tvTenSP"
+                android:textSize="15dp"
+                android:textColor="#100F0F"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                android:text="TextView" />
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="1dp"
-                android:text="TextView"
-                android:textSize="16sp"
-                android:textStyle="bold"
-               />
-            <TextView
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="1dp"
-                android:id="@+id/id_vnd"
-                android:textColor="#F10A0A"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:text=" VND"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_gravity="right">
+                <TextView
+                    android:textColor="#F10A0A"
+                    android:id="@+id/tvGiaTien"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:text="TextView"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:id="@+id/id_vnd"
+                    android:textColor="#F10A0A"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text=" VND"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
         </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 
-        <ImageView
-            android:id="@+id/imgDeleteSP"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_cancel" />
 
-        <ImageView
-            android:id="@+id/imgSP"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_camera" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>
