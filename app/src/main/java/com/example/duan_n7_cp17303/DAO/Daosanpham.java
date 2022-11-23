@@ -3,16 +3,19 @@ package com.example.duan_n7_cp17303.DAO;
 import android.util.Log;
 
 import com.example.duan_n7_cp17303.DTO.Sanpham;
+import com.example.duan_n7_cp17303.DTO.Thongbao;
 import com.example.duan_n7_cp17303.Sqlserver.DbSqlServer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Daosanpham {
+
     Connection connection;
     public Daosanpham(){
         DbSqlServer db = new DbSqlServer();
@@ -141,6 +144,40 @@ public class Daosanpham {
             e.printStackTrace();
             Log.e("zzzz","insert : co loi them du lieu");
         }
+    }
+
+    public Sanpham get_SP_theo_ID(int id) throws SQLException {
+
+        List<Sanpham> list_sp = new ArrayList<>();
+
+        try {
+            if (this.connection != null){
+                String sql = "SELECT * FROM sanpham WHERE id_sp = " + id;
+
+                Statement statement = this.connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql);
+
+                while (resultSet.next()){
+
+                    Sanpham sp = new Sanpham();
+                    sp.setId_sp(resultSet.getInt("id_sp"));
+                    sp.setId_loai(resultSet.getInt("id_loai"));
+                    sp.setTensp(resultSet.getString("tensp"));
+                    sp.setGiatien(resultSet.getString("giatien"));
+                    sp.setSoluong(resultSet.getInt("soluong"));
+                    sp.setAnh(resultSet.getString("anh"));
+
+                    list_sp.add(sp);
+                }
+
+            }
+        } catch (SQLException throwables) {
+            Log.d("TAG", "getThongBao: lỗi truy vấn");
+            throwables.printStackTrace();
+
+        }
+
+        return list_sp.get(0);
     }
 
 }

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.example.duan_n7_cp17303.Fragment.TaiKhoanFragment;
 import com.example.duan_n7_cp17303.Fragment.ThongBaoFragment;
+import com.example.duan_n7_cp17303.Fragment.ThongKeFragment;
 import com.example.duan_n7_cp17303.Fragment.TrangChuFragment;
 import com.example.duan_n7_cp17303.Fragment.YeuThichFragment;
 import com.example.duan_n7_cp17303.R;
@@ -53,6 +54,8 @@ public class HomeActivity extends AppCompatActivity {
                    replaceFragment(YeuThichFragment.newInstance());
                }else if(id == R.id.nav_taikhoan){
                    replaceFragment(TaiKhoanFragment.newInstance());
+               }else if(id == R.id.nav_thongke){
+                   replaceFragment(ThongKeFragment.newInstance());
                }else{
                    replaceFragment(TrangChuFragment.newInstance());
                }

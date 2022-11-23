@@ -6,6 +6,8 @@
         android:icon="@drawable/ic_thongbao"/>
     <item android:title="Yêu Thích" android:id="@+id/nav_yeuthich"
         android:icon="@drawable/ic_yeuthich"/>
+    <item android:id="@+id/nav_thongke" android:title="Thống kê"
+        android:icon="@android:drawable/ic_menu_save"/>
     <item android:title="Tài Khoản" android:id="@+id/nav_taikhoan"
         android:icon="@drawable/ic_taikhoan"/>
 </menu>

@@ -14,12 +14,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.duan_n7_cp17303.Adapter.Rec_Adapter_ThongBao;
+import com.example.duan_n7_cp17303.Adapter.Spinner_san_pham;
 import com.example.duan_n7_cp17303.DAO.DaoThongBao;
+import com.example.duan_n7_cp17303.DAO.Daosanpham;
+import com.example.duan_n7_cp17303.DTO.Sanpham;
 import com.example.duan_n7_cp17303.DTO.Thongbao;
 import com.example.duan_n7_cp17303.R;
 import com.google.android.material.textfield.TextInputEditText;
@@ -49,6 +53,10 @@ public class ThongBaoFragment extends Fragment {
     Context context;
     List<Thongbao> list = new ArrayList<>();
     DaoThongBao daoThongBao;
+    Daosanpham daosanpham;
+    List<Sanpham> list_sp = new ArrayList<>();
+    String tenSp;
+    int id_sp;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -64,11 +72,27 @@ public class ThongBaoFragment extends Fragment {
 
         Spinner sp_dh = view1.findViewById(R.id.tb_donHang);
 
-        TextInputEditText idd = view1.findViewById(R.id.id_tb);
 
         TextInputEditText title = view1.findViewById(R.id.tieuDe_tb);
         TextInputEditText chiTiet = view1.findViewById(R.id.chiTiet_tb);
 
+        daosanpham = new Daosanpham();
+        list_sp = daosanpham.getAll();
+        Spinner_san_pham spinner_san_pham = new Spinner_san_pham(context, (ArrayList<Sanpham>) list_sp);
+        sp_dh.setAdapter(spinner_san_pham);
+
+        sp_dh.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                id_sp = list_sp.get(position).getId_sp();
+                tenSp = list_sp.get(position).getTensp();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         daoThongBao = new DaoThongBao();
         list = daoThongBao.getThongBao();
@@ -85,7 +109,7 @@ public class ThongBaoFragment extends Fragment {
                 try {
 
                     Thongbao thongBao = new Thongbao();
-                    thongBao.setId_sp(Integer.parseInt(idd.getText().toString()));
+                    thongBao.setId_sp(id_sp);
                     thongBao.setTieude(title.getText().toString());
                     thongBao.setChitiettieude(chiTiet.getText().toString());
 

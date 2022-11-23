@@ -18,7 +18,6 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Calendar;
 
-
 public class ThongKeFragment extends Fragment {
 
     public ThongKeFragment() {
