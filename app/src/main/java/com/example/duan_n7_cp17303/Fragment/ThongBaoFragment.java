@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -94,10 +95,15 @@ public class ThongBaoFragment extends Fragment {
             }
         });
 
+
         daoThongBao = new DaoThongBao();
         list = daoThongBao.getThongBao();
         Rec_Adapter_ThongBao adapter = new Rec_Adapter_ThongBao(list, context);
         rec_tb.setAdapter(adapter);
+
+        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
+        rec_tb.addItemDecoration(itemDecoration);
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setView(view1);

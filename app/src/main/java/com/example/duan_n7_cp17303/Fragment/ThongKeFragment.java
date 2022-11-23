@@ -45,7 +45,6 @@ public class ThongKeFragment extends Fragment {
         fromDate = view.findViewById(R.id.fromdate);
         toDate = view.findViewById(R.id.todate);
 
-
         fromDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

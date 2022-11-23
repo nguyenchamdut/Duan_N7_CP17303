@@ -96,6 +96,7 @@ public class ThemSPActivity extends AppCompatActivity {
 
             }
         });
+
         btnThem.setOnClickListener(v -> {
             validate();
             if (temp == 0){
@@ -114,7 +115,6 @@ public class ThemSPActivity extends AppCompatActivity {
                     e.printStackTrace();
                     Toast.makeText(this, "Them khong thanh cong", Toast.LENGTH_SHORT).show();
                 }
-
 
             }else{
                 temp = 0;

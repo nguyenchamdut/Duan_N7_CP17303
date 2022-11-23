@@ -1,6 +1,7 @@
 package com.example.duan_n7_cp17303.DTO;
 
 public class Khachhang {
+
     int id_khachhang;
     String username;
     String pass;
