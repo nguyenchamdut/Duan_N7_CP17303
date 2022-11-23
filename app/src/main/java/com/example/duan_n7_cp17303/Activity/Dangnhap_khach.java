@@ -47,7 +47,6 @@ public class Dangnhap_khach extends AppCompatActivity {
 
                 List<Taikhoan> taikhoanList = daotaikhoan.getAll();
 
-
                 if(user.equals("")||pass.equals("")){
                     Toast.makeText(Dangnhap_khach.this, "Vui lòng không để trống", Toast.LENGTH_SHORT).show();
                 }else {
@@ -62,7 +61,6 @@ public class Dangnhap_khach extends AppCompatActivity {
                         }
                     }
                 }
-
             }
         });
 

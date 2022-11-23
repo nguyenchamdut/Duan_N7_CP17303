@@ -57,38 +57,6 @@ public class Daotaikhoan {
         return  listCat;
     }
 
-    public boolean check(){
-
-        List<Taikhoan> listCat = new ArrayList<Taikhoan>();
-
-        try {
-            if (this.objConn != null) {
-
-                String sqlQuery = "SELECT * FROM taikhoan where username = ? and pass = ?";
-
-                Statement statement = this.objConn.createStatement(); // khởi tạo cấu trúc truy vấn
-
-                ResultSet resultSet = statement.executeQuery(sqlQuery); // thực thi câu lệnh truy vấn
-
-                while (resultSet.next()) { // đọc dữ liệu gán vào đối tượng và đưa vào list
-
-                    Taikhoan objCat = new Taikhoan();
-                    objCat.setUsername(resultSet.getString("username"));// truyền tên cột dữ liệu
-                    objCat.setPass(resultSet.getString("pass")); // tên cột dữ liệu là pass
-
-                    listCat.add(objCat);
-                }
-            } // nếu kết nối khác null thì mới select và thêm dữ liệu vào, nếu không thì trả về ds rỗng
-
-
-
-        } catch (Exception e) {
-            Log.e("zzzzzzzzzz", "getAll: Có lỗi truy vấn dữ liệu " );
-            e.printStackTrace();
-        }
-        return true;
-    }
-
     public boolean insertRow( Taikhoan objCat){
         try {
             if (this.objConn != null) {
