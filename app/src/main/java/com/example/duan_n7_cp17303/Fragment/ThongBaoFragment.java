@@ -3,6 +3,7 @@ package com.example.duan_n7_cp17303.Fragment;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -33,13 +34,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ThongBaoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ThongBaoFragment extends Fragment {
-
 
     public ThongBaoFragment() {
         // Required empty public constructor
@@ -73,6 +68,15 @@ public class ThongBaoFragment extends Fragment {
 
         Spinner sp_dh = view1.findViewById(R.id.tb_donHang);
 
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("Login", getContext().MODE_PRIVATE);
+        String u = sharedPreferences.getString("name", "");
+
+        if (u.equals("admin")){
+            fab_tb.setVisibility(View.VISIBLE);
+        }
+        else {
+            fab_tb.setVisibility(View.INVISIBLE);
+        }
 
         TextInputEditText title = view1.findViewById(R.id.tieuDe_tb);
         TextInputEditText chiTiet = view1.findViewById(R.id.chiTiet_tb);
