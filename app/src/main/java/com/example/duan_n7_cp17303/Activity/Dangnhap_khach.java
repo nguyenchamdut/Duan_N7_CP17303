@@ -46,6 +46,7 @@ public class Dangnhap_khach extends AppCompatActivity {
                 String pass = password.getText().toString();
 
                 if (daotaikhoan.check_login(user, pass) == 1){
+
                     remember(user,pass, checkBox.isChecked());
 
                     Intent intent = new Intent(Dangnhap_khach.this, HomeActivity.class);
@@ -82,14 +83,10 @@ public class Dangnhap_khach extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("Login", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
 
-        if(!chk){
-            editor.clear();
-        }
-        else {
             editor.putString("name", u);
             editor.putString("pass", p);
             editor.putBoolean("remember", chk);
-        }
+
 
         editor.commit();
     }
