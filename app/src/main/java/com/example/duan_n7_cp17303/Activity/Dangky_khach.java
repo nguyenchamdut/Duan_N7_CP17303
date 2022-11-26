@@ -21,31 +21,31 @@ public class Dangky_khach extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dangky_khach);
-        username = (EditText) findViewById(R.id.username);
-        password = (EditText) findViewById(R.id.password);
-        repassword = (EditText) findViewById(R.id.repassword);
-        signup = (Button) findViewById(R.id.btnsignup);
+        username =  findViewById(R.id.username);
+        password =  findViewById(R.id.password);
+        repassword = findViewById(R.id.repassword);
+        signup = findViewById(R.id.btnsignup);
 
         daotaikhoan = new Daotaikhoan();
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String user = username.getText().toString().trim();
+                String pass = password.getText().toString();
+
                 Taikhoan taikhoan = new Taikhoan();
                 taikhoan.setUsername(username.getText().toString());
                 taikhoan.setPass(password.getText().toString());
                 if (username.getText().length() == 0 || password.getText().length() == 0  || repassword.getText().length() == 0 ){
                     Toast.makeText(Dangky_khach.this, "không được để trống", Toast.LENGTH_SHORT).show();
+                }else if (daotaikhoan.check_login(user, pass) == 1){
+                    Toast.makeText(Dangky_khach.this, "Tài khoản đã tồn tại", Toast.LENGTH_SHORT).show();
                 }else {
-                    try {
-                        daotaikhoan.insertRow(taikhoan);
-                        Toast.makeText(Dangky_khach.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                    }catch (Exception e){
-                        e.printStackTrace();
-                        Toast.makeText(Dangky_khach.this, "Them khong thanh cong", Toast.LENGTH_SHORT).show();
-                    }
+                    daotaikhoan.insertRow(taikhoan);
+                    Toast.makeText(Dangky_khach.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                    onBackPressed();
                 }
-
                 }
 
         });

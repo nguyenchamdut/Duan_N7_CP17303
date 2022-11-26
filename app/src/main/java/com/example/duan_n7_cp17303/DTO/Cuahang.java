@@ -3,7 +3,6 @@ package com.example.duan_n7_cp17303.DTO;
 public class Cuahang {
     String tencuahang;
     String username;
-    String pass;
     String email;
     int dienthoai;
     String diachi;
@@ -11,10 +10,9 @@ public class Cuahang {
     public Cuahang() {
     }
 
-    public Cuahang(String tencuahang, String username, String pass, String email, int dienthoai, String diachi) {
+    public Cuahang(String tencuahang, String username, String email, int dienthoai, String diachi) {
         this.tencuahang = tencuahang;
         this.username = username;
-        this.pass = pass;
         this.email = email;
         this.dienthoai = dienthoai;
         this.diachi = diachi;
@@ -34,14 +32,6 @@ public class Cuahang {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
     }
 
     public String getEmail() {

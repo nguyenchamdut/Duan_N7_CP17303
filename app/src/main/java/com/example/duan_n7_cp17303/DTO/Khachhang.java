@@ -4,7 +4,6 @@ public class Khachhang {
 
     int id_khachhang;
     String username;
-    String pass;
     String hoten;
     String email;
     int dienthoai;
@@ -13,10 +12,9 @@ public class Khachhang {
     public Khachhang() {
     }
 
-    public Khachhang(int id_khachhang, String username, String pass, String hoten, String email, int dienthoai, String diachi) {
+    public Khachhang(int id_khachhang, String username, String hoten, String email, int dienthoai, String diachi) {
         this.id_khachhang = id_khachhang;
         this.username = username;
-        this.pass = pass;
         this.hoten = hoten;
         this.email = email;
         this.dienthoai = dienthoai;
@@ -37,14 +35,6 @@ public class Khachhang {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
     }
 
     public String getHoten() {

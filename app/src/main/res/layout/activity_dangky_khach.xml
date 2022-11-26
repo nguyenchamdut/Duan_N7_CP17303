@@ -20,7 +20,6 @@
         android:layout_gravity="center_horizontal"/>
 
 
-
     <EditText
         android:id="@+id/username"
         android:layout_width="match_parent"

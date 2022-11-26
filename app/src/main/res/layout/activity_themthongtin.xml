@@ -21,32 +21,47 @@
     </androidx.appcompat.widget.Toolbar>
 
     <EditText
+        android:id="@+id/hoten"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Họ và Tên"/>
     <EditText
+        android:id="@+id/sodienthoai"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Số điện thoại"/>
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        />
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        />
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="Điền địa chỉ cụ thể: \nSố nhà, tên tòa nhà, tên đường, tên khu vực"
-        android:textSize="20dp"/>
     <EditText
+        android:id="@+id/eamil"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Nhập địa chỉ cụ thể"/>
+        android:hint="Email"/>
+    <EditText
+        android:id="@+id/duongpho"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Đường phố"/>
+    <EditText
+        android:id="@+id/xa"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Xã"/>
+    <EditText
+        android:id="@+id/huyen"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Huyện"/>
+    <EditText
+        android:id="@+id/tinh"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="Tỉnh"/>
+
+    <Button
+        android:id="@+id/btn_them"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thêm"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        />
 </LinearLayout>

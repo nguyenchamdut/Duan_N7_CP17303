@@ -57,7 +57,6 @@ public class HomeActivity extends AppCompatActivity {
         else {
             menu.findItem(R.id.nav_qltaikhoan).setVisible(true);
             menu.findItem(R.id.nav_yeuthich).setVisible(false);
-
         }
 
        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {

@@ -75,7 +75,6 @@ public class ThemSPActivity extends AppCompatActivity {
         btnHuy = findViewById(R.id.id_btnhuy);
         btnThem = findViewById(R.id.id_btnthem);
 
-
         daosanpham = new Daosanpham();
         list = daosanpham.getAll();
 
@@ -115,7 +114,6 @@ public class ThemSPActivity extends AppCompatActivity {
                     e.printStackTrace();
                     Toast.makeText(this, "Them khong thanh cong", Toast.LENGTH_SHORT).show();
                 }
-
             }else{
                 temp = 0;
             }
