@@ -1,7 +1,9 @@
 package com.example.duan_n7_cp17303.Adapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -16,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.duan_n7_cp17303.Activity.ShowSPActivity;
 import com.example.duan_n7_cp17303.DTO.Sanpham;
 import com.example.duan_n7_cp17303.R;
 
@@ -63,8 +66,18 @@ public class SanPhamAdapter extends BaseAdapter {
         tvTenSP.setText("" + sp.getTensp());
         tvGiaTien.setText("" + sp.getGiatien());
         Glide.with(context).load(Uri.parse(sp.getAnh())).into(imgAnhSP);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                Intent intent = new Intent(context,ShowSPActivity.class);
+                context.startActivity(intent);
+            }
+        });
         return view;
     }
+
 
 
 
