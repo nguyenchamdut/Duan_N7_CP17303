@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,6 +73,12 @@ public class SanPhamAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent = new Intent(context,ShowSPActivity.class);
+                intent.putExtra("tensp",sp.getTensp());
+                intent.putExtra("giatien",sp.getGiatien());
+                intent.putExtra("imgsp",sp.getAnh());
+                Log.e("zzzz",sp.getAnh());
+                Log.e("zzzz",sp.getTensp());
+                Log.e("zzzz",sp.getGiatien());
                 context.startActivity(intent);
             }
         });
