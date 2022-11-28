@@ -26,9 +26,6 @@ public class Themthongtin extends AppCompatActivity {
 
     Khachhang khachhang;
     Daokhachhang daokhachhang;
-    List<Taikhoan> listtaikhoan;
-    List<Khachhang> khachhangList;
-    String user;
 
     @SuppressLint("MissingInflatedId")
     @Override
