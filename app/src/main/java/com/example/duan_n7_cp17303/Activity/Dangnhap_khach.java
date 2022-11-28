@@ -26,6 +26,7 @@ public class Dangnhap_khach extends AppCompatActivity {
     Button btn_dangnhap,btn_dangky;
     Daotaikhoan daotaikhoan;
     String nguyenchamdut;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,22 @@ public class Dangnhap_khach extends AppCompatActivity {
         daotaikhoan = new Daotaikhoan();
         CheckBox checkBox = findViewById(R.id.checkk);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
+        String u = sharedPreferences.getString("name", "");
+        String p = sharedPreferences.getString("pass", "");
+        Boolean check_login = sharedPreferences.getBoolean("remember",false);
+
+        if (check_login){
+            username.setText(u);
+            password.setText(p);
+            checkBox.setChecked(check_login);
+        }
+        else {
+            username.setText("");
+            password.setText("");
+            checkBox.setChecked(check_login);
+        }
+
         btn_dangnhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +68,9 @@ public class Dangnhap_khach extends AppCompatActivity {
                     Intent intent = new Intent(Dangnhap_khach.this, HomeActivity.class);
                     Toast.makeText(Dangnhap_khach.this, "Đăng nhập thành công", Toast.LENGTH_LONG).show();
                     startActivity(intent);
+
                 }
+
                 else {
                     Toast.makeText(Dangnhap_khach.this, "Đăng nhập thất bại", Toast.LENGTH_LONG).show();
 
@@ -59,15 +78,6 @@ public class Dangnhap_khach extends AppCompatActivity {
 
             }
         });
-
-        SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
-        String u = sharedPreferences.getString("name", "");
-        String p = sharedPreferences.getString("pass", "");
-        Boolean check_login = sharedPreferences.getBoolean("remember",false);
-
-        username.setText(u);
-        password.setText(p);
-        checkBox.setChecked(check_login);
 
         btn_dangky.setOnClickListener(new View.OnClickListener() {
             @Override

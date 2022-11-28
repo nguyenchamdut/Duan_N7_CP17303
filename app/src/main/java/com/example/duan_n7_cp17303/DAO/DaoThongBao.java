@@ -27,7 +27,7 @@ public class DaoThongBao {
 
         try {
             if (this.connection != null){
-                String sql = "SELECT * FROM thongbao";
+                String sql = "SELECT * FROM thongbao ORDER BY id_thongbao DESC";
 
                 Statement statement = this.connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(sql);
@@ -54,6 +54,7 @@ public class DaoThongBao {
     }
 
     public int insert_thongBao(Thongbao thongBao) throws SQLException{
+
         Statement statement = connection.createStatement();
         String sql = "insert into thongbao values("+ thongBao.getId_sp()
                 + ",N'" + thongBao.getTieude() + "', N'" + thongBao.getChitiettieude() +  "')";

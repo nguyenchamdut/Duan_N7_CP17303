@@ -108,7 +108,6 @@ public class ThongBaoFragment extends Fragment {
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
         rec_tb.addItemDecoration(itemDecoration);
 
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setView(view1);
 

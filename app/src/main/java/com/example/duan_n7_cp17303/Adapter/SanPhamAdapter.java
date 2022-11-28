@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SanPhamAdapter extends BaseAdapter {
+
     private Context context;
     private List<Sanpham> list;
 
@@ -59,6 +60,7 @@ public class SanPhamAdapter extends BaseAdapter {
         }else{
             view = convertView;
         }
+
         TextView tvTenSP = view.findViewById(R.id.tvTenSP);
         TextView tvGiaTien = view.findViewById(R.id.tvGiaTien);
         ImageView imgAnhSP = view.findViewById(R.id.imgSP);
