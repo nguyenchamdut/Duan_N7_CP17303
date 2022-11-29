@@ -29,7 +29,7 @@ public class TaiKhoanFragment extends Fragment {
     View itemview;
     Daokhachhang daokhachhang;
     List<Khachhang> khachhangList;
-    TextView btn_dangnhap, btn_themthongtin;
+    TextView btn_dangnhap, btn_themthongtin, tvtentaikhoan;
     public TaiKhoanFragment() {
         // Required empty public constructor
     }
@@ -52,6 +52,7 @@ public class TaiKhoanFragment extends Fragment {
         itemview = inflater.inflate(R.layout.fragment_tai_khoan, container, false);
         btn_dangnhap = itemview.findViewById(R.id.ll_dangnhap);
         btn_themthongtin = itemview.findViewById(R.id.ll_thongtin);
+        tvtentaikhoan = itemview.findViewById(R.id.tv_tentaikhoan);
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("Login", MODE_PRIVATE);
         String u = sharedPreferences.getString("name", "");
@@ -61,6 +62,7 @@ public class TaiKhoanFragment extends Fragment {
             btn_dangnhap.setText("Đăng nhập");
         }else {
             btn_dangnhap.setText("Đăng Xuất");
+            tvtentaikhoan.setText(u);
         }
 
         btn_themthongtin.setText("Thông tin khách hang");

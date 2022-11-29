@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.duan_n7_cp17303.DAO.Daokhachhang;
@@ -23,7 +24,7 @@ import java.util.List;
 public class Themthongtin extends AppCompatActivity {
     EditText hoten, sodienthoai, email, duongpho, xa, huyen, tinh;
     Button btnthem;
-
+    ImageView btn_thoat;
     Khachhang khachhang;
     Daokhachhang daokhachhang;
 
@@ -41,6 +42,14 @@ public class Themthongtin extends AppCompatActivity {
         huyen = findViewById(R.id.huyen);
         tinh = findViewById(R.id.tinh);
         btnthem = findViewById(R.id.btn_them);
+        btn_thoat = findViewById(R.id.btn_thoat);
+
+        btn_thoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         khachhang = new Khachhang();
         daokhachhang = new Daokhachhang();

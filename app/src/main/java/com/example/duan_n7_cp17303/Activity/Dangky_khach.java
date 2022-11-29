@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.duan_n7_cp17303.DAO.Daotaikhoan;
@@ -17,6 +18,7 @@ public class Dangky_khach extends AppCompatActivity {
     EditText username, password, repassword,avatar;
     Button signup;
     Daotaikhoan daotaikhoan;
+    ImageView btn_thoat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +27,14 @@ public class Dangky_khach extends AppCompatActivity {
         password =  findViewById(R.id.password);
         repassword = findViewById(R.id.repassword);
         signup = findViewById(R.id.btnsignup);
+        btn_thoat = findViewById(R.id.btn_thoat);
+
+        btn_thoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         daotaikhoan = new Daotaikhoan();
 

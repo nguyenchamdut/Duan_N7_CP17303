@@ -9,6 +9,11 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#F53F29">
+        <ImageView
+            android:id="@+id/btn_thoat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_quaylai"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

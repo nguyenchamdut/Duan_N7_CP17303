@@ -4,18 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="10dp"
     android:background="@drawable/background22">
 
-    <TextView
-        android:id="@+id/tv_111"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Đăng Nhập"
-        android:textColor="@color/green"
-        android:textStyle="bold"
-        android:textSize="40dp"
-        android:layout_marginLeft="100dp"/>
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#F53F29">
+        <ImageView
+            android:id="@+id/btn_thoat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_quaylai"/>
+
+        <TextView
+            android:id="@+id/tv_111"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng Nhập"
+            android:textColor="#050707"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:layout_gravity="center_horizontal"/>
+    </androidx.appcompat.widget.Toolbar>
 
     <EditText
         android:id="@+id/username1"
@@ -23,7 +33,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/tv_111"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
         android:background="#30ffffff"
@@ -32,7 +42,8 @@
         android:hint="Tài Khoản"
         android:paddingLeft="20dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        tools:ignore="NotSibling" />
 
     <EditText
         android:id="@+id/password1"

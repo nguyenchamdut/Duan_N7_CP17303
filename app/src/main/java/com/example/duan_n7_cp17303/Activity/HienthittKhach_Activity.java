@@ -2,14 +2,19 @@ package com.example.duan_n7_cp17303.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.duan_n7_cp17303.R;
 
 public class HienthittKhach_Activity extends AppCompatActivity {
     TextView tvhoten, tvsodienthoai, tvemail, tvdiachi;
+    ImageView btn_thoat;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +25,14 @@ public class HienthittKhach_Activity extends AppCompatActivity {
         tvsodienthoai = findViewById(R.id.tv_sodienthoai);
         tvemail = findViewById(R.id.tv_email);
         tvdiachi = findViewById(R.id.tv_diachi);
+        btn_thoat = findViewById(R.id.btn_thoat);
+
+        btn_thoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         String hoten = getIntent().getExtras().getString("key_hoten");
         String sodienthoai = getIntent().getExtras().getString("key_sodienthoai");
