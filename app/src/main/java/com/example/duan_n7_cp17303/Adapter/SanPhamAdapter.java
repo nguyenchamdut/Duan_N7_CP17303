@@ -86,8 +86,4 @@ public class SanPhamAdapter extends BaseAdapter {
         });
         return view;
     }
-
-
-
-
 }

@@ -1,8 +1,13 @@
 package com.example.duan_n7_cp17303.DAO;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.view.View;
 
+import com.example.duan_n7_cp17303.Activity.ShowSPActivity;
 import com.example.duan_n7_cp17303.DTO.Khachhang;
+import com.example.duan_n7_cp17303.DTO.Taikhoan;
 import com.example.duan_n7_cp17303.Sqlserver.DbSqlServer;
 
 import java.sql.Connection;
@@ -69,4 +74,38 @@ public class Daokhachhang {
             Log.e("zzzz","insert : co loi them du lieu");
         }
     }
+
+    public List<Khachhang> checkttkhach(){
+        List<Khachhang> listCat = new ArrayList<Khachhang>();
+
+        try {
+            if (this.connection != null) {
+
+                String sqlQuery = "SELECT id_khachhang, username  FROM khachhang" ;
+
+                Statement statement = this.connection.createStatement(); // khởi tạo cấu trúc truy vấn
+
+                ResultSet resultSet = statement.executeQuery(sqlQuery); // thực thi câu lệnh truy vấn
+
+                while (resultSet.next()) { // đọc dữ liệu gán vào đối tượng và đưa vào list
+
+                    Khachhang objCat = new Khachhang();
+                    objCat.setId_khachhang(Integer.parseInt(resultSet.getString("id_khachhang")));// truyền tên cột dữ liệu
+                    objCat.setUsername(resultSet.getString("username")); // tên cột dữ liệu là pass
+
+                    Log.d("TAG", "checkttkhach: " + "username");
+                    listCat.add(objCat);
+                }
+            } // nếu kết nối khác null thì mới select và thêm dữ liệu vào, nếu không thì trả về ds rỗng
+
+
+
+        } catch (Exception e) {
+            Log.e("zzzzzzzzzz", "getAll: Có lỗi truy vấn dữ liệu " );
+            e.printStackTrace();
+        }
+        return  listCat;
+    }
+
+
 }

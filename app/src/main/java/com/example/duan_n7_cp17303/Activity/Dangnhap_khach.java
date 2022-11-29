@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -25,7 +26,7 @@ public class Dangnhap_khach extends AppCompatActivity {
     EditText username, password;
     Button btn_dangnhap,btn_dangky;
     Daotaikhoan daotaikhoan;
-    String nguyenchamdut;
+    ImageView btn_thoat;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -39,6 +40,15 @@ public class Dangnhap_khach extends AppCompatActivity {
         btn_dangky = (Button) findViewById(R.id.dangky);
         daotaikhoan = new Daotaikhoan();
         CheckBox checkBox = findViewById(R.id.checkk);
+
+        btn_thoat = findViewById(R.id.btn_thoat);
+
+        btn_thoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
         String u = sharedPreferences.getString("name", "");
@@ -68,7 +78,6 @@ public class Dangnhap_khach extends AppCompatActivity {
                     Intent intent = new Intent(Dangnhap_khach.this, HomeActivity.class);
                     Toast.makeText(Dangnhap_khach.this, "Đăng nhập thành công", Toast.LENGTH_LONG).show();
                     startActivity(intent);
-
                 }
 
                 else {

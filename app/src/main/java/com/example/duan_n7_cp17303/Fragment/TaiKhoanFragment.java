@@ -1,7 +1,6 @@
 package com.example.duan_n7_cp17303.Fragment;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -11,11 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.duan_n7_cp17303.Activity.Dangnhap_khach;
-import com.example.duan_n7_cp17303.Activity.SuaSPActivity;
 import com.example.duan_n7_cp17303.Activity.Themthongtin;
 import com.example.duan_n7_cp17303.DAO.Daotaikhoan;
 import com.example.duan_n7_cp17303.DTO.Taikhoan;
@@ -27,8 +24,7 @@ public class TaiKhoanFragment extends Fragment {
 
     View itemview;
 
-    TextView btn_dangnhap, btn_themthongtin,btnSuaSP;
-    LinearLayout layoutSuaSP;
+    TextView btn_dangnhap, btn_themthongtin;
     public TaiKhoanFragment() {
         // Required empty public constructor
     }
@@ -68,21 +64,7 @@ public class TaiKhoanFragment extends Fragment {
                 startActivity(intent1);
             }
         });
-        layoutSuaSP = itemview.findViewById(R.id.linear_suasp);
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("Login", getContext().MODE_PRIVATE);
-        String u = sharedPreferences.getString("name", "");
 
-        if (u.equals("admin")){
-            layoutSuaSP.setVisibility(View.VISIBLE);
-        }
-        else {
-            layoutSuaSP.setVisibility(View.INVISIBLE);
-        }
-
-        layoutSuaSP.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), SuaSPActivity.class);
-            startActivity(intent);
-        });
         return itemview;
     }
 }
