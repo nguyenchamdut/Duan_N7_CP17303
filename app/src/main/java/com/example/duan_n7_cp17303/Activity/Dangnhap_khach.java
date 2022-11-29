@@ -25,7 +25,6 @@ public class Dangnhap_khach extends AppCompatActivity {
     EditText username, password;
     Button btn_dangnhap,btn_dangky;
     Daotaikhoan daotaikhoan;
-    String nguyenchamdut;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -68,7 +67,6 @@ public class Dangnhap_khach extends AppCompatActivity {
                     Intent intent = new Intent(Dangnhap_khach.this, HomeActivity.class);
                     Toast.makeText(Dangnhap_khach.this, "Đăng nhập thành công", Toast.LENGTH_LONG).show();
                     startActivity(intent);
-
                 }
 
                 else {
