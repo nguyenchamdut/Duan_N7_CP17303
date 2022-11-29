@@ -145,7 +145,22 @@ public class Daosanpham {
             Log.e("zzzz","insert : co loi them du lieu");
         }
     }
+    public void updateSP(Sanpham sp){
+        try {
+            if (this.connection != null){
+                String sqlUpdate = "UPDATE sanpham SET tensp = N'" + sp.getTensp() + "',id_loai = "+sp.getId_loai()+",giatien = '"
+                        +sp.getGiatien() + "',soluong = " +sp.getSoluong() + ",anh = '" + sp.getAnh() + "' WHERE id_sp = " + sp.getId_sp();
 
+                PreparedStatement statement = this.connection.prepareStatement(sqlUpdate);
+                statement.execute();
+                Log.e("zzzzz","insertSP : thanh cong");
+            }
+        }catch (Exception e){
+            Log.e("zzzz","updateSP : co loi sua du lieu");
+            e.printStackTrace();
+
+        }
+    }
     public Sanpham get_SP_theo_ID(int id) throws SQLException {
 
         List<Sanpham> list_sp = new ArrayList<>();

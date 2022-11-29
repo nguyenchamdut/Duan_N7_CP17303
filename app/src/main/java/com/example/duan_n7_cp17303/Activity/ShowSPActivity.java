@@ -48,7 +48,6 @@ public class ShowSPActivity extends AppCompatActivity {
             if(u.equals("")){
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Bạn cần đăng nhập để thêm bình luận!!");
-                builder.setTitle(" Bạn có muốn đăng nhập không???");
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -71,8 +70,7 @@ public class ShowSPActivity extends AppCompatActivity {
         imgYeuThich.setOnClickListener(v -> {
             if(u.equals("")){
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Bạn cần đăng nhập để thêm bình luận!!");
-                builder.setTitle(" Bạn có muốn đăng nhập không???");
+                builder.setTitle("Bạn cần đăng nhập để thêm yêu thích!!");
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
