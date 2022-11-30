@@ -75,37 +75,4 @@ public class Daokhachhang {
         }
     }
 
-    public List<Khachhang> checkttkhach(){
-        List<Khachhang> listCat = new ArrayList<Khachhang>();
-
-        try {
-            if (this.connection != null) {
-
-                String sqlQuery = "SELECT id_khachhang, username  FROM khachhang" ;
-
-                Statement statement = this.connection.createStatement(); // khởi tạo cấu trúc truy vấn
-
-                ResultSet resultSet = statement.executeQuery(sqlQuery); // thực thi câu lệnh truy vấn
-
-                while (resultSet.next()) { // đọc dữ liệu gán vào đối tượng và đưa vào list
-
-                    Khachhang objCat = new Khachhang();
-                    objCat.setId_khachhang(Integer.parseInt(resultSet.getString("id_khachhang")));// truyền tên cột dữ liệu
-                    objCat.setUsername(resultSet.getString("username")); // tên cột dữ liệu là pass
-
-                    Log.d("TAG", "checkttkhach: " + "username");
-                    listCat.add(objCat);
-                }
-            } // nếu kết nối khác null thì mới select và thêm dữ liệu vào, nếu không thì trả về ds rỗng
-
-
-
-        } catch (Exception e) {
-            Log.e("zzzzzzzzzz", "getAll: Có lỗi truy vấn dữ liệu " );
-            e.printStackTrace();
-        }
-        return  listCat;
-    }
-
-
 }
