@@ -75,12 +75,14 @@ public class SanPhamAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Context context = v.getContext();
                 Intent intent = new Intent(context,ShowSPActivity.class);
+                intent.putExtra("id_sp",String.valueOf(sp.getId_sp()));
                 intent.putExtra("tensp",sp.getTensp());
                 intent.putExtra("giatien",sp.getGiatien());
                 intent.putExtra("imgsp",sp.getAnh());
                 Log.e("zzzz",sp.getAnh());
                 Log.e("zzzz",sp.getTensp());
                 Log.e("zzzz",sp.getGiatien());
+                Log.e("zzzz", String.valueOf(sp.getId_sp()));
                 context.startActivity(intent);
             }
         });

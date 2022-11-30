@@ -10,21 +10,40 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.duan_n7_cp17303.DAO.Daobinhluan;
+import com.example.duan_n7_cp17303.DTO.Binhluan;
 import com.example.duan_n7_cp17303.R;
+import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.List;
+
 public class ShowSPActivity extends AppCompatActivity {
     private ImageView imgBinhLuan,imgYeuThich,imgshowsp;
-    private TextView tvTenSP,tvGiaTien,tvThem;
+    private TextView tvTenSP,tvGiaTien;
+
+    private ListView lvBinhLuan;
+
+    Daobinhluan daobinhluan;
+    List<Binhluan> list;
+    Binhluan binhluan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_spactivity);
 
+        lvBinhLuan = findViewById(R.id.id_lvhienthibl);
         Intent intent1= getIntent();
+        String id_sp = intent1.getStringExtra("id_sp");
+        Log.e("idsp",String.valueOf(id_sp));
         String tensp = intent1.getStringExtra("tensp");
         String giatien = intent1.getStringExtra("giatien");
         String imgSP = intent1.getStringExtra("imgsp");
@@ -38,6 +57,10 @@ public class ShowSPActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = this.getSharedPreferences("Login", this.MODE_PRIVATE);
         String u = sharedPreferences.getString("name", "");
+        Log.e("u",u);
+
+
+        daobinhluan = new Daobinhluan();
 
         findViewById(R.id.id_quaylai).setOnClickListener(v -> {
             Intent intent = new Intent(ShowSPActivity.this,HomeActivity.class);
@@ -63,6 +86,35 @@ public class ShowSPActivity extends AppCompatActivity {
                 });
                 builder.show();
             }else{
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                LayoutInflater inflater = getLayoutInflater();
+                View view = inflater.inflate(R.layout.dialog_binhluan,null);
+                TextView tvBinhLuan = view.findViewById(R.id.id_binhluan);
+                TextInputLayout tilBinhLuan = view.findViewById(R.id.til_binhluan);
+                Button btnHuy = view.findViewById(R.id.btnHuyBL);
+                Button btnThem = view.findViewById(R.id.btnThemBL);
+
+
+                builder.setView(view);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                btnHuy.setOnClickListener(v1 -> {
+                    dialog.dismiss();
+                });
+                btnThem.setOnClickListener(v1 -> {
+                    Binhluan bl = new Binhluan();
+                    bl.setId_sp(Integer.parseInt(id_sp));
+                    bl.setUsername(u);
+                    bl.setTextbinhluan(tvBinhLuan.getText().toString());
+                    try {
+                        daobinhluan.insertBl(bl);
+                        Toast.makeText(this, "Them thanh cong", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                        Toast.makeText(this, "Them khong thanh cong", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }
         });
