@@ -13,12 +13,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duan_n7_cp17303.Activity.Dangnhap_khach;
 import com.example.duan_n7_cp17303.Activity.HienthittKhach_Activity;
 import com.example.duan_n7_cp17303.Activity.HomeActivity;
+import com.example.duan_n7_cp17303.Activity.SuaSPActivity;
 import com.example.duan_n7_cp17303.Activity.Themthongtin;
 import com.example.duan_n7_cp17303.DAO.Daokhachhang;
 import com.example.duan_n7_cp17303.DAO.Daotaikhoan;
@@ -35,6 +37,7 @@ public class TaiKhoanFragment extends Fragment {
     List<Khachhang> khachhangList;
     TextView btn_dangnhap, btn_themthongtin, tvtentaikhoan;
 
+    LinearLayout layoutSuaSP;
     public TaiKhoanFragment() {
         // Required empty public constructor
     }
@@ -88,7 +91,19 @@ public class TaiKhoanFragment extends Fragment {
                 ttkhachhang();
             }
         });
+        layoutSuaSP = itemview.findViewById(R.id.linear_suasp);
 
+        if (u.equals("admin")){
+            layoutSuaSP.setVisibility(View.VISIBLE);
+        }
+        else {
+            layoutSuaSP.setVisibility(View.INVISIBLE);
+        }
+
+        layoutSuaSP.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), SuaSPActivity.class);
+            startActivity(intent);
+        });
         return itemview;
     }
 
