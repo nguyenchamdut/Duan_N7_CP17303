@@ -19,11 +19,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.duan_n7_cp17303.Adapter.AdapterBinhLuan;
 import com.example.duan_n7_cp17303.DAO.Daobinhluan;
 import com.example.duan_n7_cp17303.DTO.Binhluan;
 import com.example.duan_n7_cp17303.R;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShowSPActivity extends AppCompatActivity {
@@ -31,9 +34,10 @@ public class ShowSPActivity extends AppCompatActivity {
     private TextView tvTenSP,tvGiaTien;
 
     private ListView lvBinhLuan;
+    AdapterBinhLuan adapterBinhLuan;
 
     Daobinhluan daobinhluan;
-    List<Binhluan> list;
+    List<Binhluan> list = new ArrayList<>();
     Binhluan binhluan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +64,14 @@ public class ShowSPActivity extends AppCompatActivity {
         Log.e("u",u);
 
 
-        daobinhluan = new Daobinhluan();
+        try {
+            daobinhluan = new Daobinhluan();
+            list = daobinhluan.get_BL_theo_IdSP(Integer.parseInt(id_sp));
+            adapterBinhLuan = new AdapterBinhLuan(this,list);
+            lvBinhLuan.setAdapter(adapterBinhLuan);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         findViewById(R.id.id_quaylai).setOnClickListener(v -> {
             Intent intent = new Intent(ShowSPActivity.this,HomeActivity.class);
@@ -110,6 +121,10 @@ public class ShowSPActivity extends AppCompatActivity {
                         daobinhluan.insertBl(bl);
                         Toast.makeText(this, "Them thanh cong", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
+                        daobinhluan = new Daobinhluan();
+                        list = daobinhluan.get_BL_theo_IdSP(Integer.parseInt(id_sp));
+                        adapterBinhLuan = new AdapterBinhLuan(this,list);
+                        lvBinhLuan.setAdapter(adapterBinhLuan);
                     }catch (Exception e){
                         e.printStackTrace();
                         Toast.makeText(this, "Them khong thanh cong", Toast.LENGTH_SHORT).show();

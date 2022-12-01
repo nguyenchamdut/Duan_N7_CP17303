@@ -63,7 +63,7 @@ public class Daobinhluan {
         }
     }
 
-    public Binhluan get_BL_theo_IdSP(int id) throws SQLException {
+    public List<Binhluan> get_BL_theo_IdSP(int id) throws SQLException {
 
         List<Binhluan> list = new ArrayList<>();
 
@@ -91,6 +91,6 @@ public class Daobinhluan {
 
         }
 
-        return list.get(0);
+        return list;
     }
 }
