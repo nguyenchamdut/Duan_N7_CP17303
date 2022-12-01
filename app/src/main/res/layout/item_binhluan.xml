@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    app:cardCornerRadius="8dp">
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -13,21 +15,20 @@
 
 
         <TextView
+            android:textColor="#F10606"
             android:paddingLeft="10dp"
-            android:id="@+id/tvTenSPSUA"
+            android:id="@+id/tvUserNameBL"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
             android:layout_marginEnd="8dp"
             android:text="TextView"
-
-            app:layout_constraintStart_toEndOf="@+id/imgSPSUA"
-            app:layout_constraintTop_toTopOf="@+id/imgSPSUA" />
+            app:layout_constraintStart_toEndOf="@+id/imgKH"
+            app:layout_constraintTop_toTopOf="@+id/imgKH" />
 
         <TextView
             android:paddingLeft="10dp"
-            android:textColor="#F10606"
-            android:id="@+id/tvGiaTienSUA"
+            android:id="@+id/tvTextBL"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
@@ -36,14 +37,13 @@
             android:text="TextView"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/imgSPSUA"
-
-            app:layout_constraintStart_toEndOf="@+id/imgSPSUA"
-            app:layout_constraintTop_toBottomOf="@+id/tvTenSPSUA" />
+            app:layout_constraintBottom_toBottomOf="@+id/imgKH"
+            app:layout_constraintStart_toEndOf="@+id/imgKH"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserNameBL" />
 
 
         <ImageView
-            android:id="@+id/imgSPSUA"
+            android:id="@+id/imgKH"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
