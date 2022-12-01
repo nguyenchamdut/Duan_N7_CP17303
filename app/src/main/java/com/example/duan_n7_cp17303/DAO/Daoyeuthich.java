@@ -69,7 +69,7 @@ public class Daoyeuthich {
 
         try {
             if (this.connection != null){
-                String sql = "SELECT * FROM binhluan WHERE username = " + user;
+                String sql = "SELECT * FROM yeuthich WHERE username = '" + user +"'";
 
                 Statement statement = this.connection.createStatement();
                 ResultSet resultSet = statement.executeQuery(sql);
