@@ -6,13 +6,13 @@ public class Khachhang {
     String username;
     String hoten;
     String email;
-    int dienthoai;
+    String dienthoai;
     String diachi;
 
     public Khachhang() {
     }
 
-    public Khachhang(int id_khachhang, String username, String hoten, String email, int dienthoai, String diachi) {
+    public Khachhang(int id_khachhang, String username, String hoten, String email, String dienthoai, String diachi) {
         this.id_khachhang = id_khachhang;
         this.username = username;
         this.hoten = hoten;
@@ -53,11 +53,11 @@ public class Khachhang {
         this.email = email;
     }
 
-    public int getDienthoai() {
+    public String getDienthoai() {
         return dienthoai;
     }
 
-    public void setDienthoai(int dienthoai) {
+    public void setDienthoai(String dienthoai) {
         this.dienthoai = dienthoai;
     }
 
