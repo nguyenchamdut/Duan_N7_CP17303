@@ -38,7 +38,7 @@ public class Daokhachhang {
                     kh.setUsername(resultSet.getString("username"));
                     kh.setHoten(resultSet.getString("hoten"));
                     kh.setEmail(resultSet.getString("email"));
-                    kh.setDienthoai(resultSet.getInt("dienthoai"));
+                    kh.setDienthoai(resultSet.getString("dienthoai"));
                     kh.setDiachi(resultSet.getString("diachi"));
                     khachhang.add(kh);
                 }

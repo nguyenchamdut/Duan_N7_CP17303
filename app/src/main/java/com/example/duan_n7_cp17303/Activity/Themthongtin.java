@@ -28,6 +28,8 @@ public class Themthongtin extends AppCompatActivity {
     Khachhang khachhang;
     Daokhachhang daokhachhang;
 
+
+    int temp = 0;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,44 +59,69 @@ public class Themthongtin extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
         String u = sharedPreferences.getString("name", "");
-
         Log.d("ccc", "onCreate: " + u);
-        // số 0 phải đầu tiên, các số tiếp từ 0-9 và {9,10} 1 chuỗi có 9 đến 10 số
-        String phone = "^0\\d{9,10}$";
-        String sdt = sodienthoai.getText().toString();
-        String emailll = email.getText().toString();
 
         btnthem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (hoten.getText().length() == 0 || sodienthoai.getText().length() == 0 || email.getText().length() ==0
-                 || duongpho.getText().length() == 0 || xa.getText().length() == 0 || huyen.getText().length()==0
-                 || tinh.getText().length()==0){
-                    Toast.makeText(Themthongtin.this, "Không được để trống", Toast.LENGTH_SHORT).show();
-                }/*else if (!sdt.matches("^(0|\\+84)(\\s|\\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\\d)(\\s|\\.)?(\\d{3})(\\s|\\.)?(\\d{3})$")){
-                    Toast.makeText(Themthongtin.this, "bạn phải nhập đúng số điện thoại việt nam", Toast.LENGTH_SHORT).show();
-                }*//*else if (!emailll.matches("^(.+)@(\\S+)$")){
-                    Toast.makeText(Themthongtin.this, "Bạn phải nhập đúng định dạng email", Toast.LENGTH_SHORT).show();
-                }*/else {
-                    String duongpho_ = duongpho.getText().toString();
-                    String xa_ = xa.getText().toString();
-                    String huyen_ = huyen.getText().toString();
-                    String tinh_ = tinh.getText().toString();
-                    String diachi = duongpho_ + ", " + xa_ + ", " + huyen_ + ", " + tinh_;
-                    khachhang.setUsername(u);
-                    Log.d("ccc6", "onCreate: " + u);
-                    khachhang.setHoten(hoten.getText().toString());
-                    khachhang.setDienthoai(sodienthoai.getText().toString());
-                    khachhang.setEmail(email.getText().toString());
-                    khachhang.setDiachi(diachi);
-
-
-
-                    Log.d("tt", "onClick: " + sodienthoai.getText().toString());
-                    /*daokhachhang.insertKh(khachhang);*/
-                    Toast.makeText(Themthongtin.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                }
+                    validate();
+                    if (temp == 0){
+                        String duongpho_ = duongpho.getText().toString();
+                        String xa_ = xa.getText().toString();
+                        String huyen_ = huyen.getText().toString();
+                        String tinh_ = tinh.getText().toString();
+                        String diachi = duongpho_ + ", " + xa_ + ", " + huyen_ + ", " + tinh_;
+                        khachhang.setUsername(u);
+                        Log.d("ccc6", "onCreate: " + u);
+                        khachhang.setHoten(hoten.getText().toString());
+                        khachhang.setDienthoai(sodienthoai.getText().toString());
+                        khachhang.setEmail(email.getText().toString());
+                        khachhang.setDiachi(diachi);
+                        Log.d("tt", "onClick: " + sodienthoai.getText().toString());
+                        /*daokhachhang.insertKh(khachhang);*/
+                        Toast.makeText(Themthongtin.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                    }else{
+                        temp = 0;
+                    }
             }
         });
+    }
+    public void validate(){
+        String phone = sodienthoai.getText().toString();
+        String mail = email.getText().toString();
+        if(hoten.getText().length() == 0){
+            Toast.makeText(this, "Không để trống họ tên", Toast.LENGTH_SHORT).show();
+            temp++;
+        }
+        if (sodienthoai.getText().length() == 0){
+            Toast.makeText(this, "Không để trống số điện thoại", Toast.LENGTH_SHORT).show();
+            temp++;
+        }else if(!phone.matches("^0\\d{9}$")){
+            Toast.makeText(this, "Không đúng định dạng số điện thoại", Toast.LENGTH_SHORT).show();
+            temp++;
+        }
+        if (email.getText().length() == 0){
+            Toast.makeText(this, "Không để trống email", Toast.LENGTH_SHORT).show();
+            temp++;
+        }else if(!mail.matches("^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)$")){
+            Toast.makeText(this, "Không đúng định dạng email", Toast.LENGTH_SHORT).show();
+            temp++;
+        }
+        if (duongpho.getText().length() == 0){
+            Toast.makeText(this, "Không để trống tên đường", Toast.LENGTH_SHORT).show();
+            temp++;
+        }
+        if (xa.getText().length() == 0){
+            Toast.makeText(this, "Không để trống tên xã", Toast.LENGTH_SHORT).show();
+            temp++;
+        }
+        if (huyen.getText().length() == 0){
+            Toast.makeText(this, "Không để trống tên huyện", Toast.LENGTH_SHORT).show();
+            temp++;
+        }
+        if (tinh.getText().length() == 0){
+            Toast.makeText(this, "Không để trống tên tỉnh", Toast.LENGTH_SHORT).show();
+            temp++;
+        }
     }
 }
