@@ -59,6 +59,10 @@ public class Themthongtin extends AppCompatActivity {
         String u = sharedPreferences.getString("name", "");
 
         Log.d("ccc", "onCreate: " + u);
+        // số 0 phải đầu tiên, các số tiếp từ 0-9 và {9,10} 1 chuỗi có 9 đến 10 số
+        String phone = "^0\\d{9,10}$";
+        String sdt = sodienthoai.getText().toString();
+        String emailll = email.getText().toString();
 
         btnthem.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +71,11 @@ public class Themthongtin extends AppCompatActivity {
                  || duongpho.getText().length() == 0 || xa.getText().length() == 0 || huyen.getText().length()==0
                  || tinh.getText().length()==0){
                     Toast.makeText(Themthongtin.this, "Không được để trống", Toast.LENGTH_SHORT).show();
-                }else {
+                }/*else if (!sdt.matches("^(0|\\+84)(\\s|\\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\\d)(\\s|\\.)?(\\d{3})(\\s|\\.)?(\\d{3})$")){
+                    Toast.makeText(Themthongtin.this, "bạn phải nhập đúng số điện thoại việt nam", Toast.LENGTH_SHORT).show();
+                }*//*else if (!emailll.matches("^(.+)@(\\S+)$")){
+                    Toast.makeText(Themthongtin.this, "Bạn phải nhập đúng định dạng email", Toast.LENGTH_SHORT).show();
+                }*/else {
                     String duongpho_ = duongpho.getText().toString();
                     String xa_ = xa.getText().toString();
                     String huyen_ = huyen.getText().toString();
@@ -76,18 +84,17 @@ public class Themthongtin extends AppCompatActivity {
                     khachhang.setUsername(u);
                     Log.d("ccc6", "onCreate: " + u);
                     khachhang.setHoten(hoten.getText().toString());
-                    khachhang.setDienthoai(Integer.parseInt(sodienthoai.getText().toString()));
+                    khachhang.setDienthoai(sodienthoai.getText().toString());
                     khachhang.setEmail(email.getText().toString());
                     khachhang.setDiachi(diachi);
 
-                    daokhachhang.insertKh(khachhang);
+
+
+                    Log.d("tt", "onClick: " + sodienthoai.getText().toString());
+                    /*daokhachhang.insertKh(khachhang);*/
                     Toast.makeText(Themthongtin.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-
-
-
     }
 }
