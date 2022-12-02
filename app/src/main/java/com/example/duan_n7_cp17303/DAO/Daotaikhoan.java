@@ -157,4 +157,18 @@ public class Daotaikhoan {
 
         }
     }
+
+
+    public int delete_taiKhoan(String id) throws SQLException {
+
+        Statement statement = objConn.createStatement();
+
+        String sql = "DELETE FROM taikhoan WHERE username = N'" + id + "'";
+
+        if (statement.executeUpdate(sql) > 0){
+            return 1;
+        }
+
+        return -1;
+    }
 }

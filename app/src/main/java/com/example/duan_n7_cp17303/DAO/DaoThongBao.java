@@ -81,10 +81,10 @@ public class DaoThongBao {
         return -1;
     }
 
-    public int delete_thongBao(Thongbao thongBao) throws SQLException{
+    public int delete_thongBao(int id) throws SQLException{
         Statement statement = connection.createStatement();
 
-        String sql = "DELETE FROM thongbao WHERE id_thongbao = " + thongBao.getId_thongbao();
+        String sql = "DELETE FROM thongbao WHERE id_thongbao = " + id;
 
         if (statement.executeUpdate(sql) > 0){
             return 1;
