@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.d("TAG", "onCreate: luyen da o day");
+        Log.d("TAG", "onCreate: luyen da o dayyyyy");
         Toast.makeText(this, "Nguyen o day", Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "Nguyen ga", Toast.LENGTH_SHORT).show();
         Toast.makeText(this, "Nguyen meo", Toast.LENGTH_SHORT).show();
