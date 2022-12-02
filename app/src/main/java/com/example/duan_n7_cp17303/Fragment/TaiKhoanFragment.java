@@ -45,7 +45,6 @@ public class TaiKhoanFragment extends Fragment {
 
     public static TaiKhoanFragment newInstance() {
         TaiKhoanFragment fragment = new TaiKhoanFragment();
-
         return fragment;
     }
 
@@ -80,8 +79,6 @@ public class TaiKhoanFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 dangxuat();
-                Intent intent = new Intent(getContext(), Dangnhap_khach.class);
-                startActivity(intent);
             }
         });
 
@@ -160,16 +157,19 @@ public class TaiKhoanFragment extends Fragment {
             }
 
             SharedPreferences gg = getContext().getSharedPreferences("MyPref", MODE_PRIVATE);
+            String id_khachhang = String.valueOf(gg.getInt("key_id", 0));
             String usertt = gg.getString("key_name", "");
             String hoten = gg.getString("key_hoten", "");
             String sodienthoai = gg.getString("key_sodienthoai", "");
             String email = gg.getString("key_email", "");
             String diachi = gg.getString("key_diachi", "");
 
+            Log.d("cc", "Đang gọi id khách hàng: " + id_khachhang);
             Log.d("cc", "Đang gọi username khach hang:  " + usertt);
             if (usertt.equals(u)) {
                 //Hiển thị thông tin khách hàng
                 Intent intent = new Intent(getContext(), HienthittKhach_Activity.class);
+                intent.putExtra("key_id", id_khachhang);
                 intent.putExtra("key_hoten", hoten);
                 intent.putExtra("key_sodienthoai", sodienthoai);
                 intent.putExtra("key_email", email);

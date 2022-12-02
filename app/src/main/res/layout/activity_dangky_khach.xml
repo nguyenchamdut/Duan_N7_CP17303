@@ -65,7 +65,8 @@
         android:hint="Mật Khẩu"
         android:paddingLeft="20dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        app:endIconMode="password_toggle" />
 
     <EditText
         android:id="@+id/repassword"
@@ -82,7 +83,8 @@
         android:hint="Nhập lại mật khẩu"
         android:paddingLeft="20dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        app:endIconMode="password_toggle" />
 
     <Button
         android:id="@+id/btnsignup"

@@ -21,8 +21,8 @@
             android:layout_gravity="center_horizontal"
             android:textSize="20dp"
             android:textStyle="bold"/>
-
         <TextView
+            android:id="@+id/sua_ttkhach"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sửa"

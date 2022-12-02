@@ -79,9 +79,8 @@ public class Dangnhap_khach extends AppCompatActivity {
                     Toast.makeText(Dangnhap_khach.this, "Đăng nhập thành công", Toast.LENGTH_LONG).show();
                     startActivity(intent);
                 }
-
                 else {
-                    Toast.makeText(Dangnhap_khach.this, "Đăng nhập thất bại", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Dangnhap_khach.this, "Sai username or pass", Toast.LENGTH_LONG).show();
 
                 }
 

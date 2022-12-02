@@ -26,7 +26,6 @@ public class Daokhachhang {
 
     public List<Khachhang> getAll(){
         List<Khachhang> khachhang = new ArrayList<>();
-
         try{
             if (this.connection != null){
                 String sqlSanPham = "select * from khachhang";
@@ -38,7 +37,7 @@ public class Daokhachhang {
                     kh.setUsername(resultSet.getString("username"));
                     kh.setHoten(resultSet.getString("hoten"));
                     kh.setEmail(resultSet.getString("email"));
-                    kh.setDienthoai(resultSet.getInt("dienthoai"));
+                    kh.setDienthoai(resultSet.getString("dienthoai"));
                     kh.setDiachi(resultSet.getString("diachi"));
                     khachhang.add(kh);
                 }
@@ -75,4 +74,25 @@ public class Daokhachhang {
         }
     }
 
+    public void updateRow(Khachhang khachhang){
+
+        try {
+            if (this.connection != null) {
+                // ghép chuỗi SQL
+                String sqlUpdate = "UPDATE khachhang SET username = '" + khachhang.getUsername() + "', hoten = N'" + khachhang.getHoten() + "', email = '" + khachhang.getEmail() + "', dienthoai = '" + khachhang.getDienthoai() +"', diachi = N'" +khachhang.getDiachi() +"' where id_khachhang = " + khachhang.getId_khachhang();
+
+                PreparedStatement stmt = this.connection.prepareStatement(sqlUpdate);
+                stmt.execute(); // thực thi câu lệnh SQL
+
+                Log.d("zzzzz", "updateRow: finish Update");
+
+
+            } // nếu kết nối khác null thì mới select và thêm dữ liệu vào, nếu không thì trả về ds rỗng
+
+
+        } catch (Exception e) {
+            Log.e("zzzzzzzzzz", "updateRow: Có lỗi sửa dữ liệu " );
+            e.printStackTrace();
+        }
+    }
 }

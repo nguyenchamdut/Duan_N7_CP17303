@@ -88,10 +88,8 @@ public class Themthongtin extends AppCompatActivity {
                     khachhang.setEmail(email.getText().toString());
                     khachhang.setDiachi(diachi);
 
-
-
                     Log.d("tt", "onClick: " + sodienthoai.getText().toString());
-                    /*daokhachhang.insertKh(khachhang);*/
+                    daokhachhang.insertKh(khachhang);
                     Toast.makeText(Themthongtin.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
                 }
             }
