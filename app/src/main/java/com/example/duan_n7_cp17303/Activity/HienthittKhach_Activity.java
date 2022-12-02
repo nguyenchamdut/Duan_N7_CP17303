@@ -73,7 +73,7 @@ public class HienthittKhach_Activity extends AppCompatActivity {
         btnsuattkhach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialogsuattkhach();
+                /*dialogsuattkhach();*/
                 onBackPressed();
             }
         });

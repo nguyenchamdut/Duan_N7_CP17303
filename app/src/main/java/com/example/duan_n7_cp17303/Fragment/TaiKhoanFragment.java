@@ -71,6 +71,7 @@ public class TaiKhoanFragment extends Fragment {
 
         if (u.equals("") || p.equals("")){
             btn_dangnhap.setText("Đăng nhập");
+            tvdoimatkhau.setVisibility(View.VISIBLE);
         }else {
             btn_dangnhap.setText("Đăng Xuất");
             tvtentaikhoan.setText(u);
@@ -82,8 +83,6 @@ public class TaiKhoanFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 dangxuat();
-                Intent intent = new Intent(getContext(), Dangnhap_khach.class);
-                startActivity(intent);
             }
         });
 

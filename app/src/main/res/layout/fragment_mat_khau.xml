@@ -16,7 +16,7 @@
         />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/pass_tilOldpass"
+        android:id="@+id/input_pass_cu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -25,7 +25,7 @@
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/pass_oldpass"
+            android:id="@+id/ed_pass_cu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mật khẩu cũ"
@@ -36,7 +36,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/pass_tilnewpass"
+        android:id="@+id/input_pass_moi"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/pass_newpass"
+            android:id="@+id/ed_pass_moi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mật khẩu mới"
@@ -57,7 +57,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/pass_tilnewpasscheck"
+        android:id="@+id/input_re_pass"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/pass_newpasscheck"
+            android:id="@+id/ed_re_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập lại mật khẩu"

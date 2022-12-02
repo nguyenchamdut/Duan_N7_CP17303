@@ -91,7 +91,7 @@ public class Themthongtin extends AppCompatActivity {
 
 
                     Log.d("tt", "onClick: " + sodienthoai.getText().toString());
-                    /*daokhachhang.insertKh(khachhang);*/
+                    daokhachhang.insertKh(khachhang);
                     Toast.makeText(Themthongtin.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
                 }
             }
