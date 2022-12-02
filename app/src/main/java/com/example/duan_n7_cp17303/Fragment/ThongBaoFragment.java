@@ -5,13 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +13,12 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan_n7_cp17303.Adapter.Rec_Adapter_ThongBao;
 import com.example.duan_n7_cp17303.Adapter.Spinner_san_pham;
@@ -53,14 +52,14 @@ public class ThongBaoFragment extends Fragment {
     List<Sanpham> list_sp = new ArrayList<>();
     String tenSp;
     int id_sp;
-
+    RecyclerView rec_tb;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         context = getContext();
 
-        RecyclerView rec_tb = view.findViewById(R.id.rec_tb);
+        rec_tb = view.findViewById(R.id.rec_tb);
         ImageView fab_tb = view.findViewById(R.id.fab_tb);
 
         LayoutInflater inflater = LayoutInflater.from(getContext());
@@ -73,6 +72,7 @@ public class ThongBaoFragment extends Fragment {
 
         if (u.equals("admin")){
             fab_tb.setVisibility(View.VISIBLE);
+
         }
         else {
             fab_tb.setVisibility(View.INVISIBLE);
@@ -99,11 +99,7 @@ public class ThongBaoFragment extends Fragment {
             }
         });
 
-
-        daoThongBao = new DaoThongBao();
-        list = daoThongBao.getThongBao();
-        Rec_Adapter_ThongBao adapter = new Rec_Adapter_ThongBao(list, context);
-        rec_tb.setAdapter(adapter);
+        hienThiThongBao();
 
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
         rec_tb.addItemDecoration(itemDecoration);
@@ -135,15 +131,11 @@ public class ThongBaoFragment extends Fragment {
                     e.printStackTrace();
                 }
 
-                daoThongBao = new DaoThongBao();
-                list = daoThongBao.getThongBao();
-                Rec_Adapter_ThongBao adapter = new Rec_Adapter_ThongBao(list, context);
-                rec_tb.setAdapter(adapter);
+                hienThiThongBao();
 
                 dialog.dismiss();
             }
         });
-
 
         builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
             @Override
@@ -154,7 +146,6 @@ public class ThongBaoFragment extends Fragment {
 
         AlertDialog dialog = builder.create();
 
-
         fab_tb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,6 +154,43 @@ public class ThongBaoFragment extends Fragment {
         });
 
 
+    }
+
+    public void Del_ThongBao(int id){
+
+        AlertDialog.Builder builder =  new AlertDialog.Builder(context);
+        builder.setTitle("Delete!");
+        builder.setMessage("Bạn có muốn xóa?");
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                try {
+                    daoThongBao.delete_thongBao(id);
+                    Toast.makeText(context, "Xóa thành công", Toast.LENGTH_LONG).show();
+                    hienThiThongBao();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+    }
+
+    public void hienThiThongBao(){
+        daoThongBao = new DaoThongBao();
+        list = daoThongBao.getThongBao();
+        Rec_Adapter_ThongBao adapter = new Rec_Adapter_ThongBao(list, context, this);
+        rec_tb.setAdapter(adapter);
     }
 
 

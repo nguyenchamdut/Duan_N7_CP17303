@@ -1,6 +1,7 @@
 package com.example.duan_n7_cp17303.Adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.duan_n7_cp17303.DAO.Daosanpham;
 import com.example.duan_n7_cp17303.DTO.Sanpham;
 import com.example.duan_n7_cp17303.DTO.Thongbao;
+import com.example.duan_n7_cp17303.Fragment.ThongBaoFragment;
 import com.example.duan_n7_cp17303.R;
 
 import java.sql.SQLException;
@@ -24,10 +26,12 @@ public class Rec_Adapter_ThongBao extends RecyclerView.Adapter<Rec_Adapter_Thong
 
     List<Thongbao> list;
     Context context;
+    ThongBaoFragment fragment;
 
-    public Rec_Adapter_ThongBao(List<Thongbao> list, Context context) {
+    public Rec_Adapter_ThongBao(List<Thongbao> list, Context context, ThongBaoFragment fragment) {
         this.list = list;
         this.context = context;
+        this.fragment = fragment;
     }
 
     @NonNull
@@ -56,14 +60,24 @@ public class Rec_Adapter_ThongBao extends RecyclerView.Adapter<Rec_Adapter_Thong
             e.printStackTrace();
         }
 
-
-
         holder.title.setText(thongBao.getTieude());
 
-        holder.xemChiTiet.setOnClickListener(new View.OnClickListener() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("Login", context.MODE_PRIVATE);
+        String u = sharedPreferences.getString("name", "");
+
+        if (u.equals("admin")){
+            holder.del.setVisibility(View.VISIBLE);
+        }
+        else {
+            holder.del.setVisibility(View.INVISIBLE);
+        }
+
+        holder.xemChiTiet.setText(thongBao.getChitiettieude());
+
+        holder.del.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                fragment.Del_ThongBao(thongBao.getId_thongbao());
             }
         });
 
@@ -76,7 +90,7 @@ public class Rec_Adapter_ThongBao extends RecyclerView.Adapter<Rec_Adapter_Thong
 
     public class viewHolderr extends RecyclerView.ViewHolder{
 
-        ImageView img_dh;
+        ImageView img_dh, del;
         TextView ten_donHang, title, xemChiTiet;
 
         public viewHolderr(@NonNull View itemView) {
@@ -86,7 +100,7 @@ public class Rec_Adapter_ThongBao extends RecyclerView.Adapter<Rec_Adapter_Thong
             ten_donHang = itemView.findViewById(R.id.don_hang_tb);
             title = itemView.findViewById(R.id.title_tb);
             xemChiTiet = itemView.findViewById(R.id.xem_chi_tiet);
-
+            del = itemView.findViewById(R.id.del_ThongBao);
 
         }
     }

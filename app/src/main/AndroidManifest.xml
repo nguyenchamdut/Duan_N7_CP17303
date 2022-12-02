@@ -22,6 +22,14 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <activity
+            android:name=".Activity.Chi_tiet_TK"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".Activity.HienthittKhach_Activity"
             android:exported="false" >
