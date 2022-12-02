@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duan_n7_cp17303.Activity.Dangnhap_khach;
+import com.example.duan_n7_cp17303.Activity.DoiMatKhau;
 import com.example.duan_n7_cp17303.Activity.HienthittKhach_Activity;
 import com.example.duan_n7_cp17303.Activity.HomeActivity;
 import com.example.duan_n7_cp17303.Activity.SuaSPActivity;
@@ -35,7 +36,7 @@ public class TaiKhoanFragment extends Fragment {
     View itemview;
     Daokhachhang daokhachhang;
     List<Khachhang> khachhangList;
-    TextView btn_dangnhap, btn_themthongtin, tvtentaikhoan;
+    TextView btn_dangnhap, btn_themthongtin, tvtentaikhoan, tvdoimatkhau;
 
     LinearLayout layoutSuaSP;
     public TaiKhoanFragment() {
@@ -45,6 +46,7 @@ public class TaiKhoanFragment extends Fragment {
 
     public static TaiKhoanFragment newInstance() {
         TaiKhoanFragment fragment = new TaiKhoanFragment();
+
         return fragment;
     }
 
@@ -61,6 +63,7 @@ public class TaiKhoanFragment extends Fragment {
         btn_dangnhap = itemview.findViewById(R.id.ll_dangnhap);
         btn_themthongtin = itemview.findViewById(R.id.ll_thongtin);
         tvtentaikhoan = itemview.findViewById(R.id.tv_tentaikhoan);
+        tvdoimatkhau = itemview.findViewById(R.id.ll_doimatkhau);
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("Login", MODE_PRIVATE);
         String u = sharedPreferences.getString("name", "");
@@ -79,6 +82,8 @@ public class TaiKhoanFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 dangxuat();
+                Intent intent = new Intent(getContext(), Dangnhap_khach.class);
+                startActivity(intent);
             }
         });
 
@@ -100,6 +105,14 @@ public class TaiKhoanFragment extends Fragment {
         layoutSuaSP.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), SuaSPActivity.class);
             startActivity(intent);
+        });
+
+        tvdoimatkhau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), DoiMatKhau.class);
+                startActivity(intent);
+            }
         });
         return itemview;
     }
@@ -157,19 +170,16 @@ public class TaiKhoanFragment extends Fragment {
             }
 
             SharedPreferences gg = getContext().getSharedPreferences("MyPref", MODE_PRIVATE);
-            String id_khachhang = String.valueOf(gg.getInt("key_id", 0));
             String usertt = gg.getString("key_name", "");
             String hoten = gg.getString("key_hoten", "");
             String sodienthoai = gg.getString("key_sodienthoai", "");
             String email = gg.getString("key_email", "");
             String diachi = gg.getString("key_diachi", "");
 
-            Log.d("cc", "Đang gọi id khách hàng: " + id_khachhang);
             Log.d("cc", "Đang gọi username khach hang:  " + usertt);
             if (usertt.equals(u)) {
                 //Hiển thị thông tin khách hàng
                 Intent intent = new Intent(getContext(), HienthittKhach_Activity.class);
-                intent.putExtra("key_id", id_khachhang);
                 intent.putExtra("key_hoten", hoten);
                 intent.putExtra("key_sodienthoai", sodienthoai);
                 intent.putExtra("key_email", email);

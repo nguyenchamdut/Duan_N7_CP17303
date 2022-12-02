@@ -142,6 +142,19 @@ public class Daotaikhoan {
         return list_tk.get(0);
     }
 
+    public void updateTaiKhoan(Taikhoan tk){
+        try {
+            if (this.objConn != null){
+                String sqlUpdate = "UPDATE taikhoan SET pass = '" + tk.getPass() +"' where username = '" + tk.getUsername()+"'";
 
+                PreparedStatement statement = this.objConn.prepareStatement(sqlUpdate);
+                statement.execute();
+                Log.e("zzzzz","insertSP : thanh cong");
+            }
+        }catch (Exception e){
+            Log.e("zzzz","updateSP : co loi sua du lieu");
+            e.printStackTrace();
+
+        }
+    }
 }
-

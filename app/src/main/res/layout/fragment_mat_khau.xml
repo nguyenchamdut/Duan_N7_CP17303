@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#C3D18D"
-    tools:context=".fragment.MatKhauFragment">
+    tools:context=".Fragment.TaiKhoanFragment">
 
     <ImageView
         android:layout_marginTop="20dp"
