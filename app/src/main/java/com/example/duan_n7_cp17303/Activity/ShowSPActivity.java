@@ -21,7 +21,9 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.duan_n7_cp17303.Adapter.AdapterBinhLuan;
 import com.example.duan_n7_cp17303.DAO.Daobinhluan;
+import com.example.duan_n7_cp17303.DAO.Daoyeuthich;
 import com.example.duan_n7_cp17303.DTO.Binhluan;
+import com.example.duan_n7_cp17303.DTO.YeuThich;
 import com.example.duan_n7_cp17303.R;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -39,6 +41,8 @@ public class ShowSPActivity extends AppCompatActivity {
     Daobinhluan daobinhluan;
     List<Binhluan> list = new ArrayList<>();
     Binhluan binhluan;
+
+    Daoyeuthich daoyeuthich;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +67,7 @@ public class ShowSPActivity extends AppCompatActivity {
         String u = sharedPreferences.getString("name", "");
         Log.e("u",u);
 
-
+        daoyeuthich = new Daoyeuthich();
         try {
             daobinhluan = new Daobinhluan();
             list = daobinhluan.get_BL_theo_IdSP(Integer.parseInt(id_sp));
@@ -153,7 +157,15 @@ public class ShowSPActivity extends AppCompatActivity {
                 });
                 builder.show();
             }else{
-
+                YeuThich yt = new YeuThich();
+                yt.setUsername(u);
+                yt.setId_sp(Integer.parseInt(id_sp));
+                try {
+                    daoyeuthich.insertYT(yt);
+                    Toast.makeText(this, "Đã thêm yêu thích", Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         });
 

@@ -1,13 +1,18 @@
 package com.example.duan_n7_cp17303.Adapter;
 
 import android.content.Context;
+import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.example.duan_n7_cp17303.DAO.Daotaikhoan;
 import com.example.duan_n7_cp17303.DTO.Binhluan;
+import com.example.duan_n7_cp17303.DTO.Taikhoan;
 import com.example.duan_n7_cp17303.R;
 
 import java.util.List;
@@ -50,8 +55,18 @@ public class AdapterBinhLuan extends BaseAdapter {
 
 
         Binhluan bl = list.get(position);
-        tvName.setText(""+bl.getUsername());
-        tvText.setText(""+bl.getTextbinhluan());
+        Daotaikhoan daotaikhoan = new Daotaikhoan();
+        try {
+
+            Taikhoan tk = daotaikhoan.get_SP_theo_User(bl.getUsername());
+            tvName.setText(""+bl.getUsername());
+            tvText.setText(""+bl.getTextbinhluan());
+            Glide.with(context).load(Uri.parse(tk.getAvatar())).into(imgKH);
+            Log.e("manh",bl.getUsername());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
         return view;
     }

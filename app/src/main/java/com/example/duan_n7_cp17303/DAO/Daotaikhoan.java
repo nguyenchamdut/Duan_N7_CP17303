@@ -2,12 +2,14 @@ package com.example.duan_n7_cp17303.DAO;
 
 import android.util.Log;
 
+import com.example.duan_n7_cp17303.DTO.Sanpham;
 import com.example.duan_n7_cp17303.DTO.Taikhoan;
 import com.example.duan_n7_cp17303.Sqlserver.DbSqlServer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -110,6 +112,35 @@ public class Daotaikhoan {
         return 1;
     }
 
+    public Taikhoan get_SP_theo_User(String username) throws SQLException {
+
+        List<Taikhoan> list_tk = new ArrayList<>();
+
+        try {
+            if (this.objConn != null){
+                String sql = "SELECT * FROM taikhoan WHERE username = '" + username+ "'";
+
+                Statement statement = this.objConn.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql);
+
+                while (resultSet.next()){
+
+                    Taikhoan objCat = new Taikhoan();
+                    objCat.setUsername(resultSet.getString("username"));// truyền tên cột dữ liệu
+                    objCat.setPass(resultSet.getString("pass")); // tên cột dữ liệu là pass
+                    objCat.setAvatar(resultSet.getString("avatar"));
+                    list_tk.add(objCat);
+                }
+
+            }
+        } catch (SQLException throwables) {
+            Log.d("TAG", "getThongBao: lỗi truy vấn");
+            throwables.printStackTrace();
+
+        }
+
+        return list_tk.get(0);
+    }
 
 
 }
