@@ -54,9 +54,6 @@ public class Rec_QL_Taikhoan extends RecyclerView.Adapter<Rec_QL_Taikhoan.viewHo
 
         holder.name.setText(taikhoan.getUsername());
 
-        Daokhachhang daokhachhang = new Daokhachhang();
-
-
 
         holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,28 +65,48 @@ public class Rec_QL_Taikhoan extends RecyclerView.Adapter<Rec_QL_Taikhoan.viewHo
             }
         });
 
-        Khachhang khachhang = daokhachhang.get_TK_theo_ID(taikhoan.getUsername());
-
-        Log.d("cccccc", "onBindViewHolder: " + taikhoan.getUsername());
-
-        Log.d("cccccc", " " + khachhang.getHoten());
 
         holder.tk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context, Chi_tiet_TK.class);
+                Daokhachhang daokhachhang = new Daokhachhang();
 
-                Bundle bundle = new Bundle();
-                bundle.putString("user", taikhoan.getUsername());
-                bundle.putString("hoten", khachhang.getHoten());
-                bundle.putString("email", khachhang.getEmail());
-                bundle.putString("dienthoai", khachhang.getDienthoai());
-                bundle.putString("diachi", khachhang.getDiachi());
+                if (daokhachhang.get_TK_theo_ID(taikhoan.getUsername()) != null){
 
-                intent.putExtra("khachHang", bundle);
+                    Khachhang khachhang = daokhachhang.get_TK_theo_ID(taikhoan.getUsername());
 
-                context.startActivity(intent);
+                    Intent intent = new Intent(context, Chi_tiet_TK.class);
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("user", taikhoan.getUsername());
+                    bundle.putString("hoten", khachhang.getHoten());
+                    bundle.putString("email", khachhang.getEmail());
+                    bundle.putString("dienthoai", khachhang.getDienthoai());
+                    bundle.putString("diachi", khachhang.getDiachi());
+
+                    intent.putExtra("khachHang", bundle);
+
+                    context.startActivity(intent);
+                } else {
+
+                    Intent intent = new Intent(context, Chi_tiet_TK.class);
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("user", taikhoan.getUsername());
+                    bundle.putString("hoten", "Chưa nhập thông tin");
+                    bundle.putString("email", "Chưa nhập thông tin");
+                    bundle.putString("dienthoai", "Chưa nhập thông tin");
+                    bundle.putString("diachi", "Chưa nhập thông tin");
+
+                    intent.putExtra("khachHang", bundle);
+
+                    context.startActivity(intent);
+
+                }
+
+
+
             }
         });
 
