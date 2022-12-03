@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duan_n7_cp17303.Activity.Dangnhap_khach;
+import com.example.duan_n7_cp17303.Activity.Doanh_thu;
 import com.example.duan_n7_cp17303.Activity.DoiMatKhau;
 import com.example.duan_n7_cp17303.Activity.HienthittKhach_Activity;
 import com.example.duan_n7_cp17303.Activity.HomeActivity;
@@ -37,8 +38,10 @@ public class TaiKhoanFragment extends Fragment {
     Daokhachhang daokhachhang;
     List<Khachhang> khachhangList;
     TextView btn_dangnhap, btn_themthongtin, tvtentaikhoan, tvdoimatkhau;
+    LinearLayout doanhThu;
 
     LinearLayout layoutSuaSP;
+
     public TaiKhoanFragment() {
         // Required empty public constructor
     }
@@ -65,6 +68,9 @@ public class TaiKhoanFragment extends Fragment {
         tvtentaikhoan = itemview.findViewById(R.id.tv_tentaikhoan);
         tvdoimatkhau = itemview.findViewById(R.id.ll_doimatkhau);
 
+        doanhThu = itemview.findViewById(R.id.thongKe);
+
+
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("Login", MODE_PRIVATE);
         String u = sharedPreferences.getString("name", "");
         String p = sharedPreferences.getString("pass", "");
@@ -76,6 +82,20 @@ public class TaiKhoanFragment extends Fragment {
             btn_dangnhap.setText("Đăng Xuất");
             tvtentaikhoan.setText(u);
         }
+
+        if (u.equals("admin")){
+            doanhThu.setVisibility(View.VISIBLE);
+        }else {
+            doanhThu.setVisibility(View.INVISIBLE);
+        }
+
+        doanhThu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Doanh_thu.class);
+                getContext().startActivity(intent);
+            }
+        });
 
         btn_themthongtin.setText("Thông tin khách hang");
 

@@ -65,7 +65,6 @@ public class Rec_QL_Taikhoan extends RecyclerView.Adapter<Rec_QL_Taikhoan.viewHo
             }
         });
 
-
         holder.tk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
