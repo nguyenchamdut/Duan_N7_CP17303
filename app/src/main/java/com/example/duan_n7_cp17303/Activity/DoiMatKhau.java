@@ -3,6 +3,7 @@ package com.example.duan_n7_cp17303.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,7 +49,6 @@ public class DoiMatKhau extends AppCompatActivity {
             @Override
             public void onClick(View v) {
               onBackPressed();
-
             }
         });
 
@@ -68,8 +68,10 @@ public class DoiMatKhau extends AppCompatActivity {
                 }else if (!matkhaumoi.equals(rematkhaumoi)){
                     Toast.makeText(DoiMatKhau.this, "mat khau mơi khong khơp", Toast.LENGTH_SHORT).show();
                 }else {
+                    taikhoan.setUsername(u);
                     taikhoan.setPass(matkhaumoi);
-                    daotaikhoan.updateTaiKhoan(taikhoan);
+                    daotaikhoan.updateMatkhau(taikhoan);
+                    onBackPressed();
                     Log.d("cc", "ok " + matkhaumoi);
                     Toast.makeText(DoiMatKhau.this, "ĐỔi thành công", Toast.LENGTH_SHORT).show();
                 }

@@ -59,7 +59,6 @@ public class HienthittKhach_Activity extends AppCompatActivity {
         String email = getIntent().getExtras().getString("key_email");
         String diachi = getIntent().getExtras().getString("key_diachi");
 
-
         Log.d("thu", "onCreate: " + hoten);
         Log.d("thu", "onCreate: " + sodienthoai);
         Log.d("thu", "onCreate: " + email);
@@ -73,8 +72,7 @@ public class HienthittKhach_Activity extends AppCompatActivity {
         btnsuattkhach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*dialogsuattkhach();*/
-                onBackPressed();
+                dialogsuattkhach();
             }
         });
     }
@@ -110,8 +108,6 @@ public class HienthittKhach_Activity extends AppCompatActivity {
 
         Daokhachhang daokhachhang = new Daokhachhang();
         Khachhang khachhang = new Khachhang();
-
-
 
         //nút hủy để ẩn dialog đi
         btnhuy.setOnClickListener(new View.OnClickListener() {
@@ -150,7 +146,6 @@ public class HienthittKhach_Activity extends AppCompatActivity {
 
                 daokhachhang.updateRow(khachhang);
                 dialog.dismiss();
-
             }
         });
         dialog.show();
