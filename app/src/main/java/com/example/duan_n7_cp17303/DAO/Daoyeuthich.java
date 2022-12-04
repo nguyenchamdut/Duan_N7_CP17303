@@ -93,4 +93,17 @@ public class Daoyeuthich {
 
         return list;
     }
+    public void delete_yeuthich(YeuThich yeuThich) throws SQLException{
+        try {
+            Statement statement = connection.createStatement();
+
+            String sql = "DELETE FROM yeuthich WHERE id_yeuthich = " + yeuThich.getId_yeuthich();
+            statement.executeUpdate(sql);
+
+            Log.e("zzzzz","delete thanh cong");
+        }catch (Exception e){
+            e.printStackTrace();
+            Log.e("zzzzz","delete loi");
+        }
+    }
 }

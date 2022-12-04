@@ -4,13 +4,13 @@ public class Cuahang {
     String tencuahang;
     String username;
     String email;
-    int dienthoai;
+    String dienthoai;
     String diachi;
 
     public Cuahang() {
     }
 
-    public Cuahang(String tencuahang, String username, String email, int dienthoai, String diachi) {
+    public Cuahang(String tencuahang, String username, String email, String dienthoai, String diachi) {
         this.tencuahang = tencuahang;
         this.username = username;
         this.email = email;
@@ -42,11 +42,11 @@ public class Cuahang {
         this.email = email;
     }
 
-    public int getDienthoai() {
+    public String getDienthoai() {
         return dienthoai;
     }
 
-    public void setDienthoai(int dienthoai) {
+    public void setDienthoai(String dienthoai) {
         this.dienthoai = dienthoai;
     }
 

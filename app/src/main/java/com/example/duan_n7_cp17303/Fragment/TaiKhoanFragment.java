@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.duan_n7_cp17303.Activity.Dangnhap_khach;
 import com.example.duan_n7_cp17303.Activity.DoiMatKhau;
+import com.example.duan_n7_cp17303.Activity.DonHangActivity;
 import com.example.duan_n7_cp17303.Activity.HienthittKhach_Activity;
 import com.example.duan_n7_cp17303.Activity.HomeActivity;
 import com.example.duan_n7_cp17303.Activity.SuaSPActivity;
@@ -116,6 +117,10 @@ public class TaiKhoanFragment extends Fragment {
 
         layoutSuaSP.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), SuaSPActivity.class);
+            startActivity(intent);
+        });
+        itemview.findViewById(R.id.ll_donhang).setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), DonHangActivity.class);
             startActivity(intent);
         });
 

@@ -49,13 +49,6 @@ public class ThemSPActivity extends AppCompatActivity {
     List<Sanpham> list;
     Sanpham sanpham;
 
-    Bitmap bitmapOld, bitmapNew;
-    private LinearLayout lnlChupAnh, lnlChonFile;
-    private ActivityResultLauncher<Intent> launcherCamera;
-    private ActivityResultLauncher<Intent> launcherFlie;
-    private AppCompatActivity appCompatActivity;
-    private Drawable drawable;
-
     String maloai;
     List<Loai> loaiList;
     Daohang daohang;
