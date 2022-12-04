@@ -47,7 +47,11 @@ public class DonHangActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rclView_DonHang);
         try {
             daodonhang = new Daodonhang();
-            donhangList = daodonhang.getAll_DH_theo_idKH(id_khachhang);
+            if(u.equals("admin")){
+                donhangList = daodonhang.getAll();
+            }else{
+                donhangList = daodonhang.getAll_DH_theo_idKH(id_khachhang);
+            }
             adapter_muahang = new Adapter_muahang(this,donhangList);
             recyclerView.setAdapter(adapter_muahang);
         }catch (Exception e){

@@ -63,6 +63,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>
+                <TextView
+                    android:id="@+id/id_muahang_tenkhachhang"
+                    android:textSize="16dp"
+                    android:text="abcfefeg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
             <TextView
                 android:id="@+id/id_muahang_ngaymua"
