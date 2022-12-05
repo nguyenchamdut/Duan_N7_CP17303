@@ -40,7 +40,7 @@ public class Adapter_muahang extends RecyclerView.Adapter<Adapter_muahang.viewHo
     private Daosanpham daosanpham;
     private Daochitiethoadon daochitiethoadon;
     private Daokhachhang daokhachhang;
-    private String arr[] = {"Đã được xử lý","Vận chuyển","Hoàn thành"};
+    private String arr[] = {"Đang Xử Lý","Đã được xử lý","Vận chuyển","Hoàn thành"};
     private String temp;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
     public Adapter_muahang(Context context, List<Donhang> list) {

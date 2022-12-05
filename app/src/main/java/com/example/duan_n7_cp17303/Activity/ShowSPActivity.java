@@ -264,7 +264,6 @@ public class ShowSPActivity extends AppCompatActivity {
 
                                 daochitiethoadon.insertCTHD(chitiethoadon);
                                 Toast.makeText(ShowSPActivity.this, "Mua Hàng Thành Công!!", Toast.LENGTH_SHORT).show();
-
                             }
                         }catch (Exception e){
                             e.printStackTrace();
