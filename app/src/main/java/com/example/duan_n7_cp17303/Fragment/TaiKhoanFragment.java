@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.duan_n7_cp17303.Activity.Dangnhap_khach;
+import com.example.duan_n7_cp17303.Activity.Doanh_thu;
 import com.example.duan_n7_cp17303.Activity.DoiMatKhau;
 import com.example.duan_n7_cp17303.Activity.DonHangActivity;
 import com.example.duan_n7_cp17303.Activity.HienthittKhach_Activity;
@@ -51,8 +52,9 @@ public class TaiKhoanFragment extends Fragment {
     List<Khachhang> khachhangList;
     TextView tvdangnhap, tvthemthongtin, tvtentaikhoan, tvdoimatkhau;
     ImageView avatar;
-    LinearLayout layoutSuaSP;
+    LinearLayout layoutSuaSP, doanh_thu;
     List<Taikhoan> list = new ArrayList<>();
+
 
     int index;
     public TaiKhoanFragment() {
@@ -86,6 +88,7 @@ public class TaiKhoanFragment extends Fragment {
         lldonhang = itemview.findViewById(R.id.ll_donhang);
         lldangnhap = itemview.findViewById(R.id.ll_dangnhap);
         avatar = itemview.findViewById(R.id.avatar);
+        doanh_thu = itemview.findViewById(R.id.linear_doanh_Thu);
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("Login", MODE_PRIVATE);
         String u = sharedPreferences.getString("name", "");
@@ -93,12 +96,12 @@ public class TaiKhoanFragment extends Fragment {
 
         Daotaikhoan daotaikhoan = new Daotaikhoan();
         list = daotaikhoan.get_SP_theo_User1(u);
-        Log.e("zzzz",list.get(index).getAvatar());
-        String avt = list.get(index).getAvatar();
+//        Log.e("zzzz",list.get(index).getAvatar());
+//        String avt = list.get(index).getAvatar();
 
         SharedPreferences pref = getContext().getSharedPreferences("Login", MODE_PRIVATE); // 0 - for private mode
         SharedPreferences.Editor editor = pref.edit();
-        editor.putString("avatar", list.get(index).getAvatar());
+        //editor.putString("avatar", list.get(index).getAvatar());
         editor.commit();
 
         String a = sharedPreferences.getString("avatar", "");
@@ -144,6 +147,23 @@ public class TaiKhoanFragment extends Fragment {
                 ttkhachhang();
             }
         });
+
+        if (u.equals("admin")){
+            doanh_thu.setVisibility(View.VISIBLE);
+        }
+        else {
+            doanh_thu.setVisibility(View.INVISIBLE);
+        }
+
+
+        doanh_thu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Doanh_thu.class);
+                getContext().startActivity(intent);
+            }
+        });
+
         layoutSuaSP = itemview.findViewById(R.id.linear_suasp);
 
         if (u.equals("admin")){
@@ -176,6 +196,8 @@ public class TaiKhoanFragment extends Fragment {
                 dialogAvatar();
             }
         });
+
+
         itemview.findViewById(R.id.id_thongtin).setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             LayoutInflater inflater1 = getActivity().getLayoutInflater();
@@ -194,6 +216,7 @@ public class TaiKhoanFragment extends Fragment {
             imgX.setOnClickListener(v1 -> {
                 dialog.dismiss();
             });
+
             tvTenCuaHang.setText(""+list.get(index).getTencuahang());
             tvEmail.setText("Email : "+list.get(index).getEmail());
             tvSDT.setText("Số Điện Thoại : "+list.get(index).getDienthoai());

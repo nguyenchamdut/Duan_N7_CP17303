@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.ThongKeFragment"
+    tools:context=".Activity.Doanh_thu"
     android:orientation="vertical"
     android:padding="25dp">
 
@@ -73,8 +73,7 @@
         android:id="@+id/doanhThu"
         android:backgroundTint="#ff7043"
         />
-
-
+    
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="350dp"
         android:layout_height="wrap_content"
@@ -87,7 +86,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none"
+
             />
     </com.google.android.material.textfield.TextInputLayout>
 

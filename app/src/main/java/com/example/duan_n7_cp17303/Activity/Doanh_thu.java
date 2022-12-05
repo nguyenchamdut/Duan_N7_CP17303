@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 
+import com.example.duan_n7_cp17303.DAO.Daodonhang;
 import com.example.duan_n7_cp17303.R;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -50,6 +51,15 @@ public class Doanh_thu extends AppCompatActivity {
         });
 
 
+        Daodonhang daodonhang = new Daodonhang();
+
+        doanhThu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tongThu.getEditText().setText(" " + daodonhang.doanh_Thu(tuNgay.getEditText().getText().toString(), denNgay.getEditText().getText().toString()));
+            }
+        });
+
 
     }
 
@@ -69,7 +79,7 @@ public class Doanh_thu extends AppCompatActivity {
                         int thang = i1; // nhận giá trị từ 0 -> 11
                         int ngay = i2;
 
-                        tuNgay.getEditText().setText(nam + "/" + (thang + 1) + "/" + ngay);
+                        tuNgay.getEditText().setText((thang + 1) + "/" + ngay + "/" + nam);
                     }
                 },
                 calendar.get(Calendar.YEAR),
@@ -94,7 +104,7 @@ public class Doanh_thu extends AppCompatActivity {
                         int thang = i1; // nhận giá trị từ 0 -> 11
                         int ngay = i2;
 
-                        denNgay.getEditText().setText(nam + "/" + (thang + 1) + "/" + ngay);
+                        denNgay.getEditText().setText((thang + 1) + "/" + ngay + "/" + nam);
                     }
                 },
                 calendar.get(Calendar.YEAR),

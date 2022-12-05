@@ -45,6 +45,7 @@ public class Daodonhang {
         }
         return list;
     }
+
     public long insert_DonHang(Donhang donhang) throws SQLException {
 
         Statement statement = this.connection.createStatement();
@@ -102,4 +103,30 @@ public class Daodonhang {
 
         }
     }
+
+    public int doanh_Thu(String tuNgay, String denNgay){
+
+        List<Integer> list = new ArrayList<Integer>();
+
+        try {
+
+            String sql = "SELECT SUM(soluong * giamua) AS DOANHTHU FROM chitiethoadon" +
+                    " JOIN donhang on donhang.id_donhang = chitiethoadon.id_donhang" +
+                    " WHERE donhang.ngay_muahang BETWEEN '" + tuNgay + "'" + " AND '" + denNgay + "'";
+
+            Statement statement = this.connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()){
+                list.add(resultSet.getInt("DOANHTHU"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return list.get(0);
+    }
+
+
 }
