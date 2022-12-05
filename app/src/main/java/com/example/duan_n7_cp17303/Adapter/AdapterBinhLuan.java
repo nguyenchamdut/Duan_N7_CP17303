@@ -53,7 +53,6 @@ public class AdapterBinhLuan extends BaseAdapter {
         TextView tvText = view.findViewById(R.id.tvTextBL);
         ImageView imgKH = view.findViewById(R.id.imgKH);
 
-
         Binhluan bl = list.get(position);
         Daotaikhoan daotaikhoan = new Daotaikhoan();
         try {

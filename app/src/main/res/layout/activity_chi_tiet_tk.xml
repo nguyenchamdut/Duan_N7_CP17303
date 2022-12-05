@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Activity.Chi_tiet_TK"
     android:orientation="vertical"
+    android:id="@+id/id_linearLayoutt"
     android:padding="10dp">
 
     <LinearLayout

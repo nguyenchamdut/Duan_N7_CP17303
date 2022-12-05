@@ -19,6 +19,20 @@
             android:name=".Activity.Doanh_thu"
             android:exported="false" />
         <activity
+            android:name=".Activity.HienthittKhach_Activity"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Activity.DonHangActivity"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Activity.DoiMatKhau"
             android:exported="false">
             <meta-data

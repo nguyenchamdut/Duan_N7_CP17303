@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="nhập link ảnh"
+        android:layout_margin="10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_avatar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/them_avatar"
+            android:layout_width="195dp"
+            android:layout_height="wrap_content"
+            android:text="Thêm"
+            android:layout_margin="10dp"/>
+        <Button
+            android:id="@+id/huy_avatar"
+            android:layout_width="195dp"
+            android:layout_height="wrap_content"
+            android:text="Hủy"
+            android:layout_margin="10dp"/>
+    </LinearLayout>
+
+</LinearLayout>

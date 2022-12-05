@@ -112,7 +112,7 @@ public class Daotaikhoan {
         return 1;
     }
 
-    public Taikhoan get_SP_theo_User(String username) throws SQLException {
+    public Taikhoan get_SP_theo_User(String username) throws Exception {
 
         List<Taikhoan> list_tk = new ArrayList<>();
 
@@ -141,11 +141,56 @@ public class Daotaikhoan {
 
         return list_tk.get(0);
     }
+    public List<Taikhoan> get_SP_theo_User1(String username) {
 
-    public void updateTaiKhoan(Taikhoan tk){
+        List<Taikhoan> list_tk = new ArrayList<>();
+
+        try {
+            if (this.objConn != null){
+                String sql = "SELECT * FROM taikhoan WHERE username = '" + username+ "'";
+
+                Statement statement = this.objConn.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql);
+
+                while (resultSet.next()){
+
+                    Taikhoan objCat = new Taikhoan();
+                    objCat.setUsername(resultSet.getString("username"));// truyền tên cột dữ liệu
+                    objCat.setPass(resultSet.getString("pass")); // tên cột dữ liệu là pass
+                    objCat.setAvatar(resultSet.getString("avatar"));
+                    list_tk.add(objCat);
+                }
+
+            }
+        } catch (SQLException throwables) {
+            Log.d("TAG", "getThongBao: lỗi truy vấn");
+            throwables.printStackTrace();
+
+        }
+
+        return list_tk;
+    }
+
+    public void updateMatkhau(Taikhoan tk){
         try {
             if (this.objConn != null){
                 String sqlUpdate = "UPDATE taikhoan SET pass = '" + tk.getPass() +"' where username = '" + tk.getUsername()+"'";
+
+                PreparedStatement statement = this.objConn.prepareStatement(sqlUpdate);
+                statement.execute();
+                Log.e("zzzzz","insertSP : thanh cong");
+            }
+        }catch (Exception e){
+            Log.e("zzzz","updateSP : co loi sua du lieu");
+            e.printStackTrace();
+
+        }
+    }
+
+    public void updateavatar(Taikhoan tk){
+        try {
+            if (this.objConn != null){
+                String sqlUpdate = "UPDATE taikhoan SET avatar = '" + tk.getAvatar() +"' where username = '" + tk.getUsername()+"'";
 
                 PreparedStatement statement = this.objConn.prepareStatement(sqlUpdate);
                 statement.execute();

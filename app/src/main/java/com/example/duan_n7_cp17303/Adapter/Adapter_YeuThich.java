@@ -1,6 +1,8 @@
 package com.example.duan_n7_cp17303.Adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.duan_n7_cp17303.DAO.Daosanpham;
+import com.example.duan_n7_cp17303.DAO.Daoyeuthich;
 import com.example.duan_n7_cp17303.DTO.Sanpham;
 import com.example.duan_n7_cp17303.DTO.Taikhoan;
 import com.example.duan_n7_cp17303.DTO.Thongbao;
@@ -25,7 +28,7 @@ import java.util.List;
 public class Adapter_YeuThich extends RecyclerView.Adapter<Adapter_YeuThich.viewHolderr>{
     Context context;
     List<YeuThich> list;
-
+    Daoyeuthich daoyeuthich;
     public Adapter_YeuThich(Context context, List<YeuThich> list) {
         this.context = context;
         this.list = list;
@@ -55,6 +58,32 @@ public class Adapter_YeuThich extends RecyclerView.Adapter<Adapter_YeuThich.view
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        holder.itemView.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle("Bạn cần muốn bỏ yêu thích");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    try {
+                        daoyeuthich = new Daoyeuthich();
+                        daoyeuthich.delete_yeuthich(yeuThich);
+                        list.clear();
+                        list = daoyeuthich.get_YT_theo_UserName(yeuThich.getUsername());
+                        notifyDataSetChanged();
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            builder.show();
+        });
     }
 
     @Override

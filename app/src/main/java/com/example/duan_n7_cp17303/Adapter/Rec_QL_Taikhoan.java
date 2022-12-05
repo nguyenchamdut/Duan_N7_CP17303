@@ -46,7 +46,6 @@ public class Rec_QL_Taikhoan extends RecyclerView.Adapter<Rec_QL_Taikhoan.viewHo
         return viewHolderr;
     }
 
-
     @Override
     public void onBindViewHolder(@NonNull viewHolderr holder, int position) {
 
@@ -58,10 +57,7 @@ public class Rec_QL_Taikhoan extends RecyclerView.Adapter<Rec_QL_Taikhoan.viewHo
         holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 fragment.Del_ThongBao(taikhoan.getUsername());
-
-
             }
         });
 

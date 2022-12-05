@@ -13,6 +13,7 @@ import com.example.duan_n7_cp17303.Sqlserver.DbSqlServer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -136,5 +137,81 @@ public class Daokhachhang {
         }
         return list.get(0);
     }
+
+
+    public List<Khachhang> get_Kh_theo_UserName(String user) throws SQLException {
+
+        List<Khachhang> list = new ArrayList<>();
+
+        try {
+            if (this.connection != null){
+                String sql = "SELECT * FROM khachhang WHERE username = '" + user +"'";
+
+                Statement statement = this.connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql);
+
+                while (resultSet.next()){
+
+                    Khachhang kh = new Khachhang();
+                    kh.setId_khachhang(resultSet.getInt("id_khachhang"));
+                    kh.setUsername(resultSet.getString("username"));
+                    kh.setHoten(resultSet.getString("hoten"));
+                    kh.setEmail(resultSet.getString("email"));
+                    kh.setDienthoai(resultSet.getString("dienthoai"));
+                    kh.setDiachi(resultSet.getString("diachi"));
+                    list.add(kh);
+                }
+
+            }
+        } catch (SQLException throwables) {
+            Log.d("zzzz", "getThongBaoKH: lỗi truy vấn");
+            throwables.printStackTrace();
+
+        }
+
+        return list;
+    }
+
+
+    public Khachhang get_TK_theo_ID(int id){
+
+        List<Khachhang> list = new ArrayList<>();
+
+        try{
+            if (this.connection != null){
+                String sqlSanPham = "SELECT * FROM khachhang WHERE id_khachhang = " + id ;
+
+                Statement statement = this.connection.createStatement();
+                ResultSet resultSet = statement.executeQuery(sqlSanPham);
+
+                while (resultSet.next()){
+
+                    Khachhang kh = new Khachhang();
+
+                    kh.setId_khachhang(resultSet.getInt("id_khachhang"));
+                    kh.setUsername(resultSet.getString("username"));
+                    kh.setHoten(resultSet.getString("hoten"));
+                    kh.setEmail(resultSet.getString("email"));
+                    kh.setDienthoai(resultSet.getString("dienthoai"));
+                    kh.setDiachi(resultSet.getString("diachi"));
+
+                    Log.d("ttAG", "get_TK_theo_ID: " + kh.getUsername());
+                    Log.d("ttAG", "get_TK_theo_ID: " + kh.getDiachi());
+
+                    list.add(kh);
+                }
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+            Log.e("zzzzz","getAll co loi");
+        }
+
+        if(list.size() == 0){
+            return null;
+        }
+        return list.get(0);
+    }
+
 
 }
