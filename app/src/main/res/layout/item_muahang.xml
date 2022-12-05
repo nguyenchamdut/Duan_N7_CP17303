@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#E3D985"
+        android:background="#FFFBD6"
         android:padding="10dp">
         <LinearLayout
             android:id="@+id/id_linearMH"

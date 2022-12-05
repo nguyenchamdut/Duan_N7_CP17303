@@ -32,7 +32,7 @@ public class DonHangActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_don_hang);
         findViewById(R.id.id_quaylaiHoaDon).setOnClickListener(v -> {
-
+            onBackPressed();
         });
         SharedPreferences sharedPreferences = this.getSharedPreferences("Login", MODE_PRIVATE);
         String u = sharedPreferences.getString("name", "");

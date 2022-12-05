@@ -5,7 +5,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
+import android.provider.CalendarContract;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.duan_n7_cp17303.DAO.Daochitiethoadon;
+import com.example.duan_n7_cp17303.DAO.Daodonhang;
 import com.example.duan_n7_cp17303.DAO.Daokhachhang;
 import com.example.duan_n7_cp17303.DAO.Daosanpham;
 import com.example.duan_n7_cp17303.DTO.Chitiethoadon;
@@ -64,6 +67,7 @@ public class Adapter_muahang extends RecyclerView.Adapter<Adapter_muahang.viewHo
         holder.tv_ngaymua.setText(sdf.format(donhang.getNgay_muahang()));
         daochitiethoadon = new Daochitiethoadon();
 
+
         Chitiethoadon chitiethoadon = daochitiethoadon.getAll_CT_theo_id(donhang.getId_donhang());
 
         holder.tv_soluong.setText("" + chitiethoadon.getSoluong());
@@ -85,6 +89,8 @@ public class Adapter_muahang extends RecyclerView.Adapter<Adapter_muahang.viewHo
         SharedPreferences sharedPreferences = context.getSharedPreferences("Login", context.MODE_PRIVATE);
         String u = sharedPreferences.getString("name", "");
         if (u.equals("admin")){
+            int id_donhang = donhang.getId_donhang();
+            Log.e("id", String.valueOf(id_donhang));
             holder.tv_tenkhachhang.setVisibility(View.VISIBLE);
             holder.itemView.setOnClickListener(v -> {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -99,6 +105,15 @@ public class Adapter_muahang extends RecyclerView.Adapter<Adapter_muahang.viewHo
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Toast.makeText(context, ""+temp, Toast.LENGTH_SHORT).show();
+                        Donhang donhang1 = new Donhang();
+                        donhang1.setId_donhang(id_donhang);
+                        donhang1.setTrangthai(temp);
+                        Daodonhang daodonhang = new Daodonhang();
+                        daodonhang.updateTrangThai(donhang1);
+                        list.clear();
+                        list =daodonhang.getAll();
+                        notifyDataSetChanged();
+                        Toast.makeText(context, "Update thanh cong", Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -111,7 +126,15 @@ public class Adapter_muahang extends RecyclerView.Adapter<Adapter_muahang.viewHo
 
             });
         }
-
+        if (donhang.getTrangthai().equals("Đã được xử lý")){
+            holder.tv_trangthai.setTextColor(Color.YELLOW);
+        }else if(donhang.getTrangthai().equals("Vận chuyển")){
+            holder.tv_trangthai.setTextColor(Color.BLUE);
+        }else if(donhang.getTrangthai().equals("Hoàn thành")){
+            holder.tv_trangthai.setTextColor(Color.GREEN);
+        }else{
+            holder.tv_trangthai.setTextColor(Color.RED);
+        }
     }
 
     @Override
