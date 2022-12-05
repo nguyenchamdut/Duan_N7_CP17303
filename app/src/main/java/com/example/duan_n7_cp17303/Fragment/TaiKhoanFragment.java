@@ -33,6 +33,7 @@ import com.example.duan_n7_cp17303.Activity.Themthongtin;
 import com.example.duan_n7_cp17303.DAO.Daokhachhang;
 import com.example.duan_n7_cp17303.DAO.Daotaikhoan;
 import com.example.duan_n7_cp17303.DTO.Khachhang;
+import com.example.duan_n7_cp17303.DTO.Sanpham;
 import com.example.duan_n7_cp17303.DTO.Taikhoan;
 import com.example.duan_n7_cp17303.R;
 import com.google.android.material.textfield.TextInputLayout;
@@ -47,6 +48,7 @@ public class TaiKhoanFragment extends Fragment {
     TextView tvdangnhap, tvthemthongtin, tvtentaikhoan, tvdoimatkhau;
     ImageView avatar;
     LinearLayout layoutSuaSP;
+    List<Taikhoan> list;
     public TaiKhoanFragment() {
         // Required empty public constructor
     }
@@ -82,6 +84,11 @@ public class TaiKhoanFragment extends Fragment {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("Login", MODE_PRIVATE);
         String u = sharedPreferences.getString("name", "");
         String p = sharedPreferences.getString("pass", "");
+        String a = sharedPreferences.getString("avatar", "");
+
+        Log.d("taikhoan", "user: " + u);
+        Log.d("taikhoan", "pass: " + p);
+        Log.d("taikhoan", "avatar: " + a);
 
         if (u.equals("") || p.equals("")){
             tvdangnhap.setText("Đăng nhập");
@@ -89,6 +96,9 @@ public class TaiKhoanFragment extends Fragment {
         }else {
             tvdangnhap.setText("Đăng Xuất");
             tvtentaikhoan.setText(u);
+            if (!a.equals("")){
+                Glide.with(this).load(Uri.parse(a)).into(avatar);
+            }
         }
 
         tvthemthongtin.setText("Thông tin khách hang");
@@ -190,7 +200,6 @@ public class TaiKhoanFragment extends Fragment {
                     editor.putString("key_email", khachhang.getEmail());
                     editor.putString("key_diachi", khachhang.getDiachi());
                     editor.commit();
-
                 }
             }
 
@@ -259,12 +268,22 @@ public class TaiKhoanFragment extends Fragment {
                 taikhoan.setUsername(u);
                 taikhoan.setAvatar(link_avatar);
                 daotaikhoan.updateavatar(taikhoan);
+
+                Glide.with(TaiKhoanFragment.this).load(Uri.parse(link_avatar)).into(avatar);
+
+                SharedPreferences pref = getContext().getSharedPreferences("Login", MODE_PRIVATE); // 0 - for private mode
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString("avatar", taikhoan.getAvatar());
+                editor.commit();
+
+                Log.d("ccc", "onClick: " + taikhoan.getAvatar());
+
                 dialog.dismiss();
                 Toast.makeText(getContext(), "Sửa avatar thành công", Toast.LENGTH_SHORT).show();
             }
         });
-
         dialog.show();
     }
+
 
 }
