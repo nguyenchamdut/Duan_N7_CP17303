@@ -100,7 +100,18 @@ public class TaiKhoanFragment extends Fragment {
                 Glide.with(this).load(Uri.parse(a)).into(avatar);
             }
         }
-
+        if(u.equals("") || p.equals("")){
+            llthemthongtin.setVisibility(View.INVISIBLE);
+        }else if(u.equals("admin")){
+            llthemthongtin.setVisibility(View.INVISIBLE);
+        }else{
+           llthemthongtin.setVisibility(View.VISIBLE);
+        }
+        if (u.equals("") || p.equals("")){
+            lldonhang.setVisibility(View.INVISIBLE);
+        }else{
+            lldonhang.setVisibility(View.VISIBLE);
+        }
         tvthemthongtin.setText("Thông tin khách hang");
 
         lldangnhap.setOnClickListener(new View.OnClickListener() {

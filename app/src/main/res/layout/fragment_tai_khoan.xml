@@ -30,50 +30,98 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_thongtin"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_margin="10dp"
-        android:background="#ff6659"
-        >
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_baseline_post_add_24"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="20dp"/>
-        <TextView
-            android:id="@+id/tv_thongtin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Thêm thông tin"
-            android:textSize="20dp"
-            android:layout_gravity="center_vertical"
-            android:textColor="@color/white"/>
-    </LinearLayout>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/ll_thongtin"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_margin="10dp"
+            android:background="#ff6659"
+            >
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_post_add_24"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="20dp"/>
+            <TextView
+                android:id="@+id/tv_thongtin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thêm thông tin"
+                android:textSize="20dp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/white"/>
+        </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_donhang"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_margin="10dp"
-        android:background="#ff6659">
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/donhang"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="20dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Đơn hàng"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:layout_gravity="center_vertical"/>
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_donhang"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="#ff6659">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/donhang"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đơn hàng"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_doimatkhau"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#ff6659">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/doimatkhau"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="20dp"/>
+            <TextView
+                android:id="@+id/tv_doimatkhau"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đổi mật khẩu"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/linear_suasp"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#ff6659">
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/doimatkhau"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="20dp"/>
+            <TextView
+                android:id="@+id/tv_suasp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sản phẩm đã thêm"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/ll_dangnhap"
         android:layout_margin="10dp"
@@ -95,50 +143,5 @@
             android:textColor="@color/white"
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_doimatkhau"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#ff6659">
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/doimatkhau"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="20dp"/>
-        <TextView
-            android:id="@+id/tv_doimatkhau"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Đổi mật khẩu"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:layout_gravity="center_vertical"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linear_suasp"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="#ff6659">
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/doimatkhau"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="20dp"/>
-        <TextView
-            android:id="@+id/tv_suasp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sản phẩm đã thêm"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:layout_gravity="center_vertical"/>
-    </LinearLayout>
-
 
 </LinearLayout>

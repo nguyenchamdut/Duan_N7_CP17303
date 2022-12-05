@@ -3,9 +3,11 @@ package com.example.duan_n7_cp17303.DAO;
 import android.util.Log;
 
 import com.example.duan_n7_cp17303.DTO.Donhang;
+import com.example.duan_n7_cp17303.DTO.Taikhoan;
 import com.example.duan_n7_cp17303.Sqlserver.DbSqlServer;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -85,5 +87,19 @@ public class Daodonhang {
 
         return list_dh;
     }
+    public void updateTrangThai(Donhang dh){
+        try {
+            if (this.connection != null){
+                String sqlUpdate = "UPDATE donhang SET trangthai =  N'" + dh.getTrangthai() +"' where id_donhang = " + dh.getId_donhang();
 
+                PreparedStatement statement = this.connection.prepareStatement(sqlUpdate);
+                statement.execute();
+                Log.e("zzzzz","updateTT : thanh cong");
+            }
+        }catch (Exception e){
+            Log.e("zzzz","updateTT : co loi sua du lieu");
+            e.printStackTrace();
+
+        }
+    }
 }
