@@ -27,8 +27,8 @@ public class Themthongtin extends AppCompatActivity {
     ImageView btn_thoat;
     Khachhang khachhang;
     Daokhachhang daokhachhang;
-
     int temp = 0;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +59,8 @@ public class Themthongtin extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("Login", MODE_PRIVATE);
         String u = sharedPreferences.getString("name", "");
 
+        Log.d("ccc", "onCreate: " + u);
+
         btnthem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,14 +78,17 @@ public class Themthongtin extends AppCompatActivity {
                     khachhang.setEmail(email.getText().toString());
                     khachhang.setDiachi(diachi);
 
+                    Log.d("tt", "onClick: " + sodienthoai.getText().toString());
                     daokhachhang.insertKh(khachhang);
                     Toast.makeText(Themthongtin.this, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                    onBackPressed();
                 }else{
                     temp = 0;
                 }
             }
         });
     }
+
     public void validate(){
         String phone = sodienthoai.getText().toString();
         String mail = email.getText().toString();

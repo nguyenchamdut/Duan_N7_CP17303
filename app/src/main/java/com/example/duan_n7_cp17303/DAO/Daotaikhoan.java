@@ -112,7 +112,7 @@ public class Daotaikhoan {
         return 1;
     }
 
-    public Taikhoan get_SP_theo_User(String username) throws SQLException {
+    public Taikhoan get_SP_theo_User(String username) throws Exception {
 
         List<Taikhoan> list_tk = new ArrayList<>();
 
@@ -140,6 +140,35 @@ public class Daotaikhoan {
         }
 
         return list_tk.get(0);
+    }
+    public List<Taikhoan> get_SP_theo_User1(String username) {
+
+        List<Taikhoan> list_tk = new ArrayList<>();
+
+        try {
+            if (this.objConn != null){
+                String sql = "SELECT * FROM taikhoan WHERE username = '" + username+ "'";
+
+                Statement statement = this.objConn.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql);
+
+                while (resultSet.next()){
+
+                    Taikhoan objCat = new Taikhoan();
+                    objCat.setUsername(resultSet.getString("username"));// truyền tên cột dữ liệu
+                    objCat.setPass(resultSet.getString("pass")); // tên cột dữ liệu là pass
+                    objCat.setAvatar(resultSet.getString("avatar"));
+                    list_tk.add(objCat);
+                }
+
+            }
+        } catch (SQLException throwables) {
+            Log.d("TAG", "getThongBao: lỗi truy vấn");
+            throwables.printStackTrace();
+
+        }
+
+        return list_tk;
     }
 
     public void updateMatkhau(Taikhoan tk){

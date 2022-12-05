@@ -38,6 +38,7 @@ import com.example.duan_n7_cp17303.DTO.Taikhoan;
 import com.example.duan_n7_cp17303.R;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaiKhoanFragment extends Fragment {
@@ -48,7 +49,9 @@ public class TaiKhoanFragment extends Fragment {
     TextView tvdangnhap, tvthemthongtin, tvtentaikhoan, tvdoimatkhau;
     ImageView avatar;
     LinearLayout layoutSuaSP;
-    List<Taikhoan> list;
+    List<Taikhoan> list = new ArrayList<>();
+
+    int index;
     public TaiKhoanFragment() {
         // Required empty public constructor
     }
@@ -84,6 +87,17 @@ public class TaiKhoanFragment extends Fragment {
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("Login", MODE_PRIVATE);
         String u = sharedPreferences.getString("name", "");
         String p = sharedPreferences.getString("pass", "");
+
+        Daotaikhoan daotaikhoan = new Daotaikhoan();
+        list = daotaikhoan.get_SP_theo_User1(u);
+        Log.e("zzzz",list.get(index).getAvatar());
+        String avt = list.get(index).getAvatar();
+
+        SharedPreferences pref = getContext().getSharedPreferences("Login", MODE_PRIVATE); // 0 - for private mode
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putString("avatar", list.get(index).getAvatar());
+        editor.commit();
+
         String a = sharedPreferences.getString("avatar", "");
 
         Log.d("taikhoan", "user: " + u);
@@ -95,9 +109,9 @@ public class TaiKhoanFragment extends Fragment {
             lldoimatkhau.setVisibility(View.INVISIBLE);
         }else {
             tvdangnhap.setText("Đăng Xuất");
-            tvtentaikhoan.setText(u);
+            tvtentaikhoan.setText(list.get(index).getUsername());
             if (!a.equals("")){
-                Glide.with(this).load(Uri.parse(a)).into(avatar);
+                Glide.with(getContext()).load(Uri.parse(a)).into(avatar);
             }
         }
         if(u.equals("") || p.equals("")){
@@ -281,13 +295,6 @@ public class TaiKhoanFragment extends Fragment {
                 daotaikhoan.updateavatar(taikhoan);
 
                 Glide.with(TaiKhoanFragment.this).load(Uri.parse(link_avatar)).into(avatar);
-
-                SharedPreferences pref = getContext().getSharedPreferences("Login", MODE_PRIVATE); // 0 - for private mode
-                SharedPreferences.Editor editor = pref.edit();
-                editor.putString("avatar", taikhoan.getAvatar());
-                editor.commit();
-
-                Log.d("ccc", "onClick: " + taikhoan.getAvatar());
 
                 dialog.dismiss();
                 Toast.makeText(getContext(), "Sửa avatar thành công", Toast.LENGTH_SHORT).show();
