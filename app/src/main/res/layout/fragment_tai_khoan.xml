@@ -25,7 +25,7 @@
                 android:layout_height="50dp"
                 android:src="@drawable/ic_baseline_account_circle_24"
                 android:layout_gravity="center"
-                 />
+                />
         </androidx.cardview.widget.CardView>
         <TextView
             android:textStyle="bold"
@@ -130,6 +130,30 @@
                 android:textColor="@color/white"
                 android:layout_gravity="center_vertical"/>
         </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linear_doanh_Thu"
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#6200EE">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="20dp"
+                android:src="?attr/actionModePasteDrawable" />
+            <TextView
+                android:id="@+id/tv_doanhthu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Doanh thu"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/ll_dangnhap"
@@ -152,6 +176,7 @@
             android:textColor="@color/white"
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
+
     <TextView
         android:textColor="#6200EE"
         android:id="@+id/id_thongtin"
