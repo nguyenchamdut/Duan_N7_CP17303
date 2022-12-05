@@ -36,6 +36,10 @@ public class Chi_tiet_TK extends AppCompatActivity {
         m_sdt.setText(""+ dienthoai);
         m_diachi.setText(diachi);
 
+        findViewById(R.id.id_linearLayoutt).setOnClickListener(v -> {
+            onBackPressed();
+        });
+
 
 
 
