@@ -2,6 +2,7 @@ package com.example.duan_n7_cp17303.Fragment;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -30,8 +31,10 @@ import com.example.duan_n7_cp17303.Activity.HienthittKhach_Activity;
 import com.example.duan_n7_cp17303.Activity.HomeActivity;
 import com.example.duan_n7_cp17303.Activity.SuaSPActivity;
 import com.example.duan_n7_cp17303.Activity.Themthongtin;
+import com.example.duan_n7_cp17303.DAO.Daocuahang;
 import com.example.duan_n7_cp17303.DAO.Daokhachhang;
 import com.example.duan_n7_cp17303.DAO.Daotaikhoan;
+import com.example.duan_n7_cp17303.DTO.Cuahang;
 import com.example.duan_n7_cp17303.DTO.Khachhang;
 import com.example.duan_n7_cp17303.DTO.Sanpham;
 import com.example.duan_n7_cp17303.DTO.Taikhoan;
@@ -173,7 +176,29 @@ public class TaiKhoanFragment extends Fragment {
                 dialogAvatar();
             }
         });
-
+        itemview.findViewById(R.id.id_thongtin).setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            LayoutInflater inflater1 = getActivity().getLayoutInflater();
+            View  view = inflater1.inflate(R.layout.dialog_cuahang,null);
+            ImageView imgX = view.findViewById(R.id.id_x);
+            TextView tvTenCuaHang = view.findViewById(R.id.id_cuahang_tencuahang);
+            TextView tvEmail = view.findViewById(R.id.id_cuahang_email);
+            TextView tvSDT = view.findViewById(R.id.id_cuahang_sdt);
+            TextView tvDiaChi = view.findViewById(R.id.id_cuahang_diachi);
+            builder.setView(view);
+            Daocuahang daocuahang = new Daocuahang();
+            List<Cuahang> list = new ArrayList<>();
+            list = daocuahang.getAll();
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            imgX.setOnClickListener(v1 -> {
+                dialog.dismiss();
+            });
+            tvTenCuaHang.setText(""+list.get(index).getTencuahang());
+            tvEmail.setText("Email : "+list.get(index).getEmail());
+            tvSDT.setText("Số Điện Thoại : "+list.get(index).getDienthoai());
+            tvDiaChi.setText("Địa Chỉ : "+list.get(index).getDiachi());
+        });
         return itemview;
     }
 
