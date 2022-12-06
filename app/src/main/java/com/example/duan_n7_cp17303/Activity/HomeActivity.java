@@ -14,7 +14,6 @@ import android.view.MenuItem;
 import com.example.duan_n7_cp17303.Fragment.QuanLyTaiKhanFragment;
 import com.example.duan_n7_cp17303.Fragment.TaiKhoanFragment;
 import com.example.duan_n7_cp17303.Fragment.ThongBaoFragment;
-import com.example.duan_n7_cp17303.Fragment.ThongKeFragment;
 import com.example.duan_n7_cp17303.Fragment.TrangChuFragment;
 import com.example.duan_n7_cp17303.Fragment.YeuThichFragment;
 import com.example.duan_n7_cp17303.R;

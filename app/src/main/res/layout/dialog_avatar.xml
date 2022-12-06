@@ -21,14 +21,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
+            android:layout_weight="1"
             android:id="@+id/them_avatar"
-            android:layout_width="195dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Thêm"
             android:layout_margin="10dp"/>
         <Button
+            android:layout_weight="1"
             android:id="@+id/huy_avatar"
-            android:layout_width="195dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hủy"
             android:layout_margin="10dp"/>
